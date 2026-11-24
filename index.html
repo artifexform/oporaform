@@ -560,6 +560,49 @@ body::before { content:none !important; display:none !important; }
   background:rgba(255,255,255,0.75) !important;
 }
 
+
+/* Улучшенная читаемость текста на иллюстрированном фоне */
+main .body{
+  color:#292720 !important;
+  background:rgba(255,250,243,.97) !important;
+  border:1px solid rgba(111,91,68,.22) !important;
+  border-radius:18px !important;
+  box-shadow:0 8px 24px rgba(55,39,24,.12) !important;
+  padding:12px 20px 16px !important;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+main .body .muted,
+main .body .small,
+main .body .role-note,
+main .body th{
+  color:#5d554b !important;
+}
+main .body a{color:#245c4c !important}
+main .related{
+  background:rgba(255,250,243,.94) !important;
+  border:1px solid rgba(111,91,68,.18) !important;
+  border-radius:18px !important;
+  padding:14px 16px !important;
+  box-shadow:0 6px 20px rgba(55,39,24,.08) !important;
+}
+main .related .row{background:rgba(255,255,255,.97) !important}
+[data-theme="dark"] main .body{
+  color:#f0ece4 !important;
+  background:rgba(37,41,38,.97) !important;
+  border-color:rgba(235,224,207,.18) !important;
+  box-shadow:0 8px 24px rgba(0,0,0,.24) !important;
+}
+[data-theme="dark"] main .body .muted,
+[data-theme="dark"] main .body .small,
+[data-theme="dark"] main .body .role-note,
+[data-theme="dark"] main .body th{color:#d0c8bb !important}
+[data-theme="dark"] main .body a{color:#a8c9b7 !important}
+[data-theme="dark"] main .related{
+  background:rgba(37,41,38,.96) !important;
+  border-color:rgba(235,224,207,.15) !important;
+}
+
 </style>
 </head>
 <body>
