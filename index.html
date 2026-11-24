@@ -200,62 +200,259 @@ details.more[open] summary::after{transform:rotate(180deg)}
   main{padding:0}
 }
 
-/* ===== Reference-inspired visual layer ===== */
-:root{--bg:#f7eee6;--surface:#fffdfa;--surface2:#f0e6db;--ink:#20272a;--muted:#65686a;--line:#e6dcd1;--accent:#34746d;--accent-ink:#fff;--red:#b74432;--radius:17px;--shadow:0 2px 4px rgba(55,39,25,.06),0 7px 18px rgba(55,39,25,.07)}
-body{background:linear-gradient(120deg,#f5eade 0%,#fbf4ed 48%,#f5e9de 100%);font-size:16px}
-.wrap{max-width:820px;padding-left:18px;padding-right:18px}
-header{background:rgba(250,244,237,.92);border-bottom:1px solid rgba(220,205,190,.65)}
-.hrow{gap:9px;padding:12px 0 10px}
-.brand{display:flex;align-items:center;gap:9px;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.15}
-.brand-heart{font-size:29px;color:#c86d59;line-height:1}
-.brand b{display:block;font-size:17px}
-.brand small{display:block;color:var(--muted);font-size:12px;font-weight:400;margin-top:3px}
-.icon-btn{border-radius:13px;height:38px;min-width:38px;font-size:14px}
-.search input{height:46px;border-radius:13px;background:#fffdfa;font-size:16px}
-main{padding:17px 0 112px}
-h1{font-size:25px} h2{font-size:19px;margin:25px 0 10px}
-#view{position:relative}
-.sos-big{width:min(100%,365px);min-height:86px;padding:15px 17px;border-radius:19px;background:#b74432;position:relative;z-index:1}
-.sos-big b{font-size:21px}.sos-big span{font-size:12px;display:block;margin-top:3px}
-.home-hero{position:relative;min-height:240px;margin:2px 0 16px;display:flex;align-items:flex-start}
-.home-hero .hero-copy{position:relative;z-index:2;width:53%;padding-top:2px}
-.home-hero .hero-image{position:absolute;right:-18px;top:-18px;width:58%;height:270px;object-fit:cover;object-position:center;border-radius:0 0 0 48px;mask-image:linear-gradient(to right,transparent 0%,#000 18%);}
-.home-hero .hand-note{font-family:Georgia,serif;font-style:italic;color:#326c66;font-size:19px;line-height:1.35;margin:23px 0 0 1px;max-width:245px}
-.feels{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.feel{min-height:58px;padding:10px 12px;border-radius:14px;background:rgba(255,253,250,.9);font-size:14px;font-weight:600;box-shadow:var(--shadow)}
-.roles{background:#efe5d9;border-radius:14px}
-.roles button{font-size:14px;padding:10px 4px}
-.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
-.tile{min-height:88px;padding:12px;border-radius:15px;background:rgba(255,253,250,.93)}
-.tile b{font-size:14px}.tile small{font-size:12px}
-.chips{gap:7px}.chip{background:#fffdfa;padding:7px 11px;font-size:13px}
-.row{border-radius:14px;padding:11px 12px;background:rgba(255,253,250,.93)}
-.row .code{background:#f0e8de}
-.body,.stepbox,.timer{background:rgba(255,253,250,.94);border-radius:18px}
-.short{border-radius:17px;background:#fffdfa}
-.bottom{background:rgba(255,253,250,.97)!important;backdrop-filter:blur(10px)}
-nav.bottom .wrap{max-width:820px}
-nav.bottom a{padding-top:8px}
-.section-hero,.pause-hero,.saved-hero{width:100%;height:185px;object-fit:cover;border-radius:18px;margin:4px 0 14px;box-shadow:var(--shadow)}
-.pause-hero{height:190px;object-position:center 45%}
-.done-image{display:block;width:100%;max-height:230px;object-fit:cover;border-radius:16px;margin:0 0 12px}
-.saved-hero{height:185px}
-footer{font-size:12px}
-@media(max-width:639px){
- .wrap{padding-left:15px;padding-right:15px}
- .home-hero{min-height:218px;margin-top:0}
- .home-hero .hero-copy{width:58%}
- .home-hero .hero-image{right:-15px;width:58%;height:238px;top:-10px}
- .home-hero .hand-note{font-size:17px;margin-top:18px}
- .sos-big{width:100%;min-height:78px;padding:13px 14px}
- .sos-big b{font-size:18px}
- .feels{grid-template-columns:repeat(2,minmax(0,1fr))}
- .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
- .section-hero,.pause-hero,.saved-hero{height:155px}
- .hrow{gap:6px}.brand b{font-size:15px}.brand small{font-size:10px}
- .icon-btn{padding:0 8px;min-width:36px}
+
+/* ============================================
+   REFERENCE DESIGN — warm botanical interior
+   All visual assets are local user-uploaded PNGs
+============================================ */
+:root {
+  --bg:#f7efe7;
+  --surface:#fffdf9;
+  --surface2:#f0e8de;
+  --ink:#24282a;
+  --muted:#626568;
+  --line:#e3dacf;
+  --accent:#34736d;
+  --accent-ink:#fff;
+  --accent-soft:#dcebe5;
+  --red:#b64232;
+  --red-soft:#f5e0da;
+  --green:#3d7650;
+  --green-soft:#e2eee3;
+  --amber:#9a6a12;
+  --amber-soft:#f5ead2;
+  --radius:17px;
+  --shadow:0 2px 4px rgba(50,35,20,.05),0 5px 15px rgba(50,35,20,.07);
 }
-@media(min-width:640px){.home-hero{min-height:265px}.home-hero .hero-image{height:300px}}
+html[data-theme="dark"] {
+  --bg:#171a19;
+  --surface:#252a28;
+  --surface2:#303633;
+  --ink:#f2eee8;
+  --muted:#b8b9b3;
+  --line:#414742;
+  --accent:#78b8aa;
+  --accent-ink:#14201d;
+  --accent-soft:#30433d;
+  --red:#ca6957;
+  --red-soft:#49312c;
+  --green:#82bd8d;
+  --green-soft:#293c30;
+  --amber:#e3b45c;
+  --amber-soft:#40351e;
+  --shadow:0 3px 14px rgba(0,0,0,.2);
+}
+html { min-height:100%; background:var(--bg); }
+body {
+  position:relative;
+  isolation:isolate;
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--ink);
+  transition:background-color .25s,color .25s;
+}
+/* Transparent decorative edge frame from the user's calm PNG */
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("images/page-frame.png");
+  background-position:top center;
+  background-repeat:no-repeat;
+  background-size:100% auto;
+  opacity:.96;
+}
+html[data-theme="dark"] body::before {
+  filter:brightness(.36) saturate(.58);
+  opacity:.7;
+}
+.wrap { max-width:760px; }
+header {
+  background:rgba(250,244,237,.92);
+  border-bottom:1px solid rgba(220,207,191,.8);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+header .wrap { background:transparent; }
+html[data-theme="dark"] header { background:rgba(25,29,27,.94); border-color:var(--line); }
+.hrow { gap:9px; padding:10px 0 8px; }
+.brand-lockup {
+  flex:1 1 180px;
+  min-width:135px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--ink);
+  text-decoration:none;
+  white-space:normal;
+  line-height:1.15;
+}
+.brand-heart { color:#c86c55; font-size:31px; line-height:1; }
+.brand-copy { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.brand-copy strong { font-size:16px; font-weight:700; }
+.brand-copy small { font-size:11.5px; color:var(--muted); font-weight:400; }
+.icon-btn { border-radius:12px; }
+.icon-btn.sos { border-color:var(--red); background:var(--surface); color:var(--red); }
+.search input { background:rgba(255,253,249,.96); }
+html[data-theme="dark"] .search input { background:var(--surface); }
+main { padding:16px 0 105px; }
+main > .wrap {
+  max-width:760px;
+  padding:17px 20px 42px;
+  min-height:78vh;
+  border-radius:27px 27px 0 0;
+  background:rgba(250,244,237,.91);
+  box-shadow:0 0 28px rgba(70,45,25,.06);
+}
+html[data-theme="dark"] main > .wrap {
+  background:rgba(26,30,28,.94);
+  box-shadow:0 0 28px rgba(0,0,0,.18);
+}
+h1 { font-size:25px; line-height:1.2; }
+h2 { font-size:19px; margin:24px 0 10px; }
+.sos-big {
+  background:var(--red);
+  color:#fff;
+  border-radius:19px;
+  padding:17px 15px;
+  box-shadow:var(--shadow);
+}
+html[data-theme="dark"] .sos-big { color:#fff; }
+.sos-big b { font-size:21px; }
+.sos-big span { display:block; font-size:13px; line-height:1.4; margin-top:5px; }
+.home-hero {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.03fr);
+  align-items:end;
+  gap:3px;
+  min-height:230px;
+  margin:0 -4px 6px;
+  overflow:hidden;
+}
+.home-hero-copy { min-width:0; align-self:start; padding-top:10px; position:relative; z-index:1; }
+.home-couple-art {
+  width:100%;
+  height:250px;
+  object-fit:contain;
+  object-position:center bottom;
+  align-self:end;
+  filter:drop-shadow(0 5px 6px rgba(75,48,29,.08));
+}
+.home-hero-note {
+  margin:17px 0 2px;
+  padding-left:1px;
+  color:#376c65;
+  font-family:"Golos Text",system-ui,sans-serif;
+  font-size:19px;
+  font-style:italic;
+  line-height:1.35;
+}
+.home-hero-note span { color:#c47b61; font-style:normal; font-size:26px; margin-left:4px; }
+html[data-theme="dark"] .home-hero-note { color:#9ac9bd; }
+.first-section-title { margin-top:10px; }
+.feels { gap:8px; }
+.feel {
+  min-height:58px;
+  padding:10px 13px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  font-weight:600;
+  box-shadow:var(--shadow);
+}
+.tiles { grid-template-columns:repeat(4,minmax(0,1fr)); gap:9px; }
+.tile {
+  min-height:83px;
+  padding:12px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:15px;
+  box-shadow:var(--shadow);
+}
+.tile b { font-size:14.5px; }
+.tile small { font-size:12px; }
+.roles { background:var(--surface2); border-radius:13px; }
+.roles button { font-size:14px; }
+.roles button.on { background:var(--accent); color:var(--accent-ink); }
+.role-note { font-size:12.5px; line-height:1.4; }
+.chip { background:var(--surface); border-color:var(--line); }
+.row,.body,.stepbox,.timer,.code-btn {
+  background:var(--surface);
+  border-color:var(--line);
+  box-shadow:var(--shadow);
+}
+.row { border-radius:13px; padding:11px 13px; }
+.row .code { background:var(--surface2); }
+.page-illustration {
+  display:block;
+  width:100%;
+  max-height:280px;
+  object-fit:contain;
+  object-position:center;
+  margin:7px auto 17px;
+  border-radius:16px;
+}
+.sections-art { max-height:275px; }
+.pause-calm-art { max-height:250px; }
+.favorites-art { max-height:290px; }
+.pause-complete-art {
+  display:block;
+  width:100%;
+  max-height:310px;
+  object-fit:contain;
+  margin:15px auto 6px;
+}
+.done { background:var(--green-soft); border:1px solid var(--line); }
+.durs button { background:var(--surface); color:var(--ink); border-color:var(--line); }
+.durs button.on { background:var(--accent); color:var(--accent-ink); }
+nav.bottom {
+  background:rgba(255,253,249,.97);
+  border-top:1px solid var(--line);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+html[data-theme="dark"] nav.bottom { background:rgba(37,42,40,.97); }
+nav.bottom a.on { color:var(--accent); }
+.modal .sheet { background:var(--surface); color:var(--ink); }
+.empty { background:var(--surface); border-color:var(--line); }
+@media (max-width:639px) {
+  .wrap { padding-left:13px; padding-right:13px; }
+  .hrow { gap:6px; }
+  .brand-lockup { flex:1 1 110px; min-width:112px; gap:6px; }
+  .brand-heart { font-size:27px; }
+  .brand-copy strong { font-size:14px; }
+  .brand-copy small { font-size:10px; }
+  .icon-btn { height:38px; min-width:36px; padding:0 8px; font-size:13px; }
+  .icon-btn.sos { gap:4px; }
+  main > .wrap { padding:14px 13px 100px; border-radius:22px 22px 0 0; }
+  .home-hero { grid-template-columns:minmax(0,1fr) minmax(0,.96fr); min-height:180px; }
+  .home-couple-art { height:195px; }
+  .sos-big { padding:14px 11px; }
+  .sos-big b { font-size:17px; }
+  .sos-big span { font-size:11.5px; }
+  .home-hero-note { font-size:16px; margin-top:12px; }
+  .home-hero-note span { font-size:22px; }
+  .tiles { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .feel { min-height:54px; }
+  .page-illustration { max-height:220px; }
+  .sections-art { max-height:230px; }
+  .favorites-art { max-height:250px; }
+  .pause-calm-art { max-height:220px; }
+}
+@media (min-width:640px) and (max-width:900px) {
+  .tiles { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media (max-width:370px) {
+  .brand-lockup { min-width:98px; }
+  .brand-copy strong { font-size:12.5px; }
+  .brand-copy small { font-size:9px; }
+  .icon-btn.sos { font-size:11px; }
+  .role-pill { max-width:65px; overflow:hidden; }
+  .home-hero { min-height:165px; }
+  .home-couple-art { height:175px; }
+}
 
 </style>
 </head>
@@ -263,7 +460,10 @@ footer{font-size:12px}
 <header>
   <div class="wrap">
     <div class="hrow">
-      <a class="brand" data-go="#home"><span class="brand-heart">♥</span><span><b>Как быть, когда сложно</b><small>Учимся слышать друг друга</small></span></a>
+      <a class="brand-lockup" data-go="#home" aria-label="На главную">
+        <span class="brand-heart" aria-hidden="true">♥</span>
+        <span class="brand-copy"><strong>Как быть, когда сложно</strong><small>Учимся слышать друг друга</small></span>
+      </a>
       <button class="icon-btn sos" id="helpBtn" type="button" aria-label="Экстренная помощь">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
         Помощь
@@ -389,14 +589,32 @@ const view = $('#view');
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 
 /* ---------- theme & role ---------- */
-function applyTheme(t){ document.documentElement.setAttribute('data-theme', t); }
+function updateThemeButton(){
+  const button = $('#themeBtn');
+  if (!button) return;
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  button.innerHTML = dark
+    ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>`
+    : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>`;
+  button.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+  button.setAttribute('aria-pressed', String(dark));
+  button.title = button.getAttribute('aria-label');
+}
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+  updateThemeButton();
+}
 let theme = store.get('theme', (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
 applyTheme(theme);
-$('#themeBtn').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(theme); store.set('theme', theme); };
+$('#themeBtn').onclick = () => {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  applyTheme(theme);
+  store.set('theme', theme);
+};
 
 
 
-let role = store.get('role', 'both');
+let role = store.get('role', 'v');
 const ROLE_NAME = {v: 'Виктор', vi: 'Виктория', both: 'Оба'};
 function applyRole(){
   document.body.classList.toggle('role-v', role === 'v');
@@ -561,11 +779,17 @@ function renderHome(){
   const syms = DATA.symptoms.slice(0, 10).map((s, i) => `<a class="chip" data-sym="${i}">${esc(s.phrase)}</a>`).join('');
   const rec = recent.filter(id => CARDS[id]).slice(0, 4);
   view.innerHTML = `
-    <section class="home-hero"><div class="hero-copy">
-      <button class="sos-big" type="button" data-go="#conflict"><b>СЕЙЧАС КОНФЛИКТ</b><span>Пошагово: стоп-кран → остывание → разбор → закрытие</span></button>
-      <div class="hand-note">Разные люди.<br>Один важный разговор. ♡</div>
-    </div><img class="hero-image" src="couple.png" alt="Пара разговаривает на диване" onerror="this.style.display='none'"></section>
-    <h2 style="margin-top:10px">Что ты сейчас чувствуешь?</h2>
+    <section class="home-hero" aria-label="Сейчас конфликт">
+      <div class="home-hero-copy">
+        <button class="sos-big" type="button" data-go="#conflict">
+          <b>СЕЙЧАС КОНФЛИКТ</b>
+          <span>Пошагово: стоп-кран → остывание → разбор → закрытие</span>
+        </button>
+        <p class="home-hero-note">Разные люди.<br>Один важный разговор. <span aria-hidden="true">♡</span></p>
+      </div>
+      <img class="home-couple-art" src="images/home-couple.png" alt="Пара разговаривает на диване" fetchpriority="high">
+    </section>
+    <h2 class="first-section-title">Что ты сейчас чувствуешь?</h2>
     <div class="feels">${FEELS.map(f => `<a class="feel" data-go="#feel-${f.id}">${esc(f.t)}</a>`).join('')}</div>
     <h2>Кто читает?</h2>
     <div class="roles" role="group" aria-label="Кто читает">
@@ -586,7 +810,7 @@ function renderHome(){
   view.querySelectorAll('[data-sym]').forEach(a => a.onclick = e => { e.preventDefault(); const s = DATA.symptoms[+a.dataset.sym]; $('#q').value = s.phrase.replace(/[«»]/g, ''); onSearch(); });
 }
 function renderSections(){
-  view.innerHTML = `<h1>Разделы</h1><img class="section-hero" src="talk.png" alt="Разговор и взаимопонимание" onerror="this.style.display='none'"><div class="list">${DATA.sections.map(s => {
+  view.innerHTML = `<h1>Разделы</h1><img class="page-illustration sections-art" src="images/sections-talk.png" alt="Пара разговаривает рядом с плакатом «Разные люди. Один важный разговор»" loading="lazy"><div class="list">${DATA.sections.map(s => {
     const one = s.children.length === 1 && CARDS[s.children[0]] && CARDS[s.children[0]].code === s.code;
     return one ? rowFor(s.children[0], preview(s.children[0])) : rowFor(s.id, s.children.length + ' ' + plural(s.children.length, ['карточка','карточки','карточек']));
   }).join('')}</div>`;
@@ -631,7 +855,7 @@ function setupChecklist(id){
 }
 function renderSaved(){
   const f = favs.filter(id => CARDS[id]);
-  view.innerHTML = `<h1>Избранное</h1><img class="saved-hero" src="joy.png" alt="Радостные объятия" onerror="this.style.display='none'">${f.length ? `<div class="list">${f.map(id => rowFor(id)).join('')}</div>` : `<div class="empty">Пока пусто. Нажмите ☆ в карточке, чтобы она появилась здесь.</div>`}
+  view.innerHTML = `<h1>Избранное</h1><img class="page-illustration favorites-art" src="images/favorites-joy.png" alt="Счастливая пара обнимается" loading="lazy">${f.length ? `<div class="list">${f.map(id => rowFor(id)).join('')}</div>` : `<div class="empty">Пока пусто. Нажмите ☆ в карточке, чтобы она появилась здесь.</div>`}
     ${recent.length ? `<h2>Недавно открывали</h2><div class="list">${recent.filter(id => CARDS[id]).map(id => rowFor(id)).join('')}</div>` : ''}`;
 }
 
@@ -729,7 +953,8 @@ function renderPause(){
   clearInterval(tick);
   const end = store.get('pauseEnd', 0);
   const active = end && end > Date.now() - 6*3600e3;
-  view.innerHTML = `<h1>Безопасная пауза</h1><img class="pause-hero" src="calm.png" alt="Спокойная тихая комната" onerror="this.style.display='none'">
+  view.innerHTML = `<h1>Безопасная пауза</h1>
+    <img class="page-illustration pause-calm-art" src="images/pause-calm.png" alt="Тихая уютная комната и человек отдыхает с чашкой чая" loading="lazy">
     <p class="muted" style="margin-top:-4px">Выберите, сколько нужно. Сайт посчитает время возврата и подготовит сообщение.</p>
     <div class="durs">${DURS.map(([v, l]) => `<button type="button" data-d="${v}">${l}</button>`).join('')}</div>
     <div id="tbox"></div>
@@ -756,7 +981,7 @@ function renderPause(){
   const draw = () => {
     const left = end - Date.now();
     if (left <= 0){
-      box.innerHTML = `<div class="done"><img class="done-image" src="hug.png" alt="Объятие после паузы" onerror="this.style.display='none'"><b>Время вернуться.</b> Начни первым:<div class="say">«Я вернулся. Готов поговорить».<button class="cp" type="button" data-t="Я вернулся. Готов поговорить.">копировать</button></div><button class="btn" type="button" id="tReset">Закрыть таймер</button></div>`;
+      box.innerHTML = `<div class="done"><b>Время вернуться.</b> Начни первым:<div class="say">«Я вернулся. Готов поговорить».<button class="cp" type="button" data-t="Я вернулся. Готов поговорить.">копировать</button></div><img class="pause-complete-art" src="images/pause-hug.png" alt="Пара обнимается после паузы" loading="lazy"><button class="btn" type="button" id="tReset">Закрыть таймер</button></div>`;
       $('#tReset').onclick = () => { store.set('pauseEnd', 0); renderPause(); };
       clearInterval(tick); return;
     }
