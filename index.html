@@ -260,6 +260,8 @@ header,main,nav.bottom,.modal,.toast{position:relative;z-index:2}
 footer{padding-bottom:4px}
 .page-illustration{border-radius:18px;overflow:hidden;margin:8px 0 18px}
 .page-illustration img{width:100%;height:auto;display:block;object-fit:contain}
+.page-illustration.section-banner{aspect-ratio:2.5/1;border-radius:22px;box-shadow:0 12px 30px rgba(69,48,29,.09)}
+.page-illustration.section-banner img{width:100%;height:100%;object-fit:cover;object-position:center}
 .pause-hero-image img{max-height:240px;object-fit:contain}
 .done-hero-image img{max-height:200px;object-fit:contain}
 .birds{position:fixed;top:10%;right:2%;width:140px;z-index:5;pointer-events:none;
@@ -894,10 +896,28 @@ function preview(id){ const c = CARDS[id]; if (!c) return ''; const s = c.text.s
 function plural(n, f){ const m = n % 10, h = n % 100; return f[(m===1 && h!==11) ? 0 : (m>=2 && m<=4 && (h<12 || h>14)) ? 1 : 2]; }
 function renderSection(id){
   const s = SECS[id]; if (!s) return renderHome();
-  const sectionImages = ['Repair (3).png','Repair (7).png','Repair (11).png','Repair (16).png','Repair (10).png','Repair (12).png','Repair (13).png','Repair (14).png','Repair (15).png','Repair (18).png'];
-  const sectionIndex = DATA.sections.findIndex(section => section.id === id);
-  const sectionImage = sectionImages[(sectionIndex >= 0 ? sectionIndex : 0) % sectionImages.length];
-  view.innerHTML = `<div class="crumbs"><a data-go="#sections">Разделы</a></div><h1>${esc(s.code)}. ${esc(s.title)}</h1><div class="page-illustration"><img src="images/${sectionImage}" width="1200" height="600" alt="Иллюстрация раздела" loading="lazy"></div><div class="list">${s.children.map(c => rowFor(c)).join('')}</div>`;
+  const sectionImages = {
+    'sec-0':'00_glavnaya-mysl.jpg',
+    'sec-1':'01_pochemu-ssorimsya.jpg',
+    'sec-2':'02_bezopasnost.jpg',
+    'sec-3':'03_dogovorennosti.jpg',
+    'sec-4':'04_pravila.jpg',
+    'sec-5':'05_krasnye-flagi.jpg',
+    'sec-6':'06_algoritmy.jpg',
+    'sec-7':'07_svyaz-v-shtorm.jpg',
+    'sec-8':'08_ritualy.jpg',
+    'sec-9':'09_samoregulyatsiya.jpg',
+    'sec-10':'10_spasayushchie-frazy.jpg',
+    'sec-11':'11_glubokie-voprosy.jpg',
+    'sec-12':'12_terapiya.jpg',
+    'sec-13':'13_pravilnoe-dvizhenie.jpg',
+    'sec-14':'14_knigi-i-filmy.jpg',
+    'sec-16':'16_ekstrennaya-pomoshch.jpg',
+    'sec-17':'17_glavny-vyvod.jpg',
+    'sec-18':'18_shablon-izmeneniy.jpg'
+  };
+  const sectionImage = sectionImages[id] || '00_glavnaya-mysl.jpg';
+  view.innerHTML = `<div class="crumbs"><a data-go="#sections">Разделы</a></div><h1>${esc(s.code)}. ${esc(s.title)}</h1><div class="page-illustration section-banner"><img src="images/${sectionImage}" width="1500" height="600" alt="Иллюстрация: ${esc(s.title)}" loading="lazy"></div><div class="list">${s.children.map(c => rowFor(c)).join('')}</div>`;
 }
 const CHECK = new Set(['s13-5', 's13-1']);
 function renderCard(id){
