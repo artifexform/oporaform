@@ -302,6 +302,104 @@ footer{padding-bottom:4px}
 }
 
 
+/* Премиальная тёплая визуальная система */
+:root{
+  --ink:#292720;
+  --muted:#766f64;
+  --accent:#376b5b;
+  --accent-ink:#fffdf8;
+  --line:rgba(111,91,68,.16);
+  --surface:#fffaf3;
+  --surface2:#f1e8dc;
+  --shadow:0 12px 32px rgba(69,48,29,.10),0 2px 7px rgba(69,48,29,.05);
+}
+body{color:var(--ink);background-color:#eee4d8 !important}
+header{
+  background:rgba(249,244,236,.97) !important;
+  border-bottom:1px solid rgba(91,72,52,.13) !important;
+  box-shadow:0 5px 22px rgba(60,44,28,.07);
+}
+header .wrap{max-width:1040px}
+.wrap{max-width:1040px}
+main{padding:24px 24px 120px;max-width:1088px;margin:0 auto}
+.home-hero{
+  min-height:390px;
+  margin:8px 0 24px;
+  padding:28px 30px;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:28px;
+  background:linear-gradient(115deg,rgba(255,250,243,.92),rgba(255,250,243,.70));
+  box-shadow:0 18px 48px rgba(65,47,31,.10),inset 0 1px 0 rgba(255,255,255,.8);
+  overflow:hidden;
+}
+.home-hero-copy{max-width:48%;padding-top:10px}
+.home-hero .sos-big{
+  max-width:390px;
+  padding:21px 22px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#bd573b,#d16d4c);
+  box-shadow:0 12px 25px rgba(157,73,48,.20);
+}
+.home-hero .sos-big b{font-size:22px;letter-spacing:.01em}
+.home-hero .sos-big span{line-height:1.55}
+.home-hero-note{font-size:19px;line-height:1.55;margin:24px 0 0;color:#386b5d}
+.home-hero-art{left:43%;right:0;bottom:0;height:100%;align-items:flex-end}
+.home-hero-art img{width:92%;height:92%;object-fit:contain;object-position:center bottom}
+.home-content{
+  padding:26px 28px 30px;
+  border:1px solid rgba(255,255,255,.78);
+  border-radius:26px;
+  background:rgba(255,250,243,.88);
+  box-shadow:0 14px 38px rgba(65,47,31,.09);
+}
+.home-content h2{font-size:21px;letter-spacing:-.02em;margin:22px 0 13px}
+.home-content h2:first-child{margin-top:0}
+.feels,.tiles{gap:12px}
+.feel,.tile{
+  background:rgba(255,255,255,.92) !important;
+  border:1px solid rgba(111,91,68,.13);
+  border-radius:17px;
+  box-shadow:0 4px 14px rgba(65,47,31,.055);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.feel:hover,.tile:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(65,47,31,.10);
+  border-color:rgba(55,107,91,.30);
+}
+.tile{min-height:96px;padding:15px}
+.tile b{font-size:15.5px;line-height:1.35}
+.tile small{font-size:12.5px;color:#777064}
+.feel{min-height:62px;padding:13px 15px}
+.roles{background:#eee5d9;border:1px solid rgba(111,91,68,.10);padding:5px;border-radius:15px}
+.roles button{border-radius:11px;padding:11px 8px}
+.roles button.on{background:#376b5b;box-shadow:0 4px 12px rgba(55,107,91,.18)}
+.role-note{color:#766f64;line-height:1.5}
+.chip{background:#fffaf3;border:1px solid rgba(111,91,68,.15);box-shadow:0 3px 10px rgba(65,47,31,.04)}
+.row{background:rgba(255,250,243,.96);border:1px solid rgba(111,91,68,.12);box-shadow:0 4px 14px rgba(65,47,31,.05)}
+.icon-btn{background:#fffaf3;border-color:rgba(111,91,68,.18);box-shadow:0 3px 10px rgba(65,47,31,.045)}
+.icon-btn.sos{background:#fff7f1}
+nav.bottom{background:rgba(249,244,236,.97);border-top:1px solid rgba(91,72,52,.13);box-shadow:0 -8px 28px rgba(60,44,28,.07)}
+nav.bottom .wrap{max-width:1040px}
+.page-illustration,.stepbox,.timer{border-radius:22px}
+@media(max-width:639px){
+  main{padding:14px 12px 105px}
+  .home-hero{min-height:360px;padding:20px 18px;border-radius:22px;margin-bottom:16px}
+  .home-hero-copy{max-width:62%;padding-top:2px}
+  .home-hero .sos-big{padding:16px 14px}
+  .home-hero .sos-big b{font-size:17px}
+  .home-hero .sos-big span{font-size:13px}
+  .home-hero-note{font-size:15px;line-height:1.45;margin-top:17px}
+  .home-hero-art{left:38%;height:78%}
+  .home-hero-art img{width:100%;height:100%}
+  .home-content{padding:20px 16px 24px;border-radius:21px}
+  .home-content h2{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){
+  .feel,.tile{transition:none}
+  .feel:hover,.tile:hover{transform:none}
+}
+
 /* Полноценный непрозрачный фон комнаты, движется при прокрутке страницы */
 html { background:transparent !important; }
 body {
