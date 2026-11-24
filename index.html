@@ -226,13 +226,6 @@ header{background:rgba(250,246,240,.92);border-color:var(--line)}
 [data-theme="dark"] header{background:rgba(36,39,34,.94)}
 .wrap{max-width:760px}
 main{padding-top:14px}
-.bg-decor-left,.bg-decor-right{
-  position:fixed;top:0;bottom:0;width:min(16vw,230px);z-index:0;
-  pointer-events:none;background-repeat:no-repeat;background-position:center;
-  background-size:100% 100%;opacity:.92;
-}
-.bg-decor-left{left:0;background-image:url("images/Repair (1).png")}
-.bg-decor-right{right:0;background-image:url("images/Repair (17).png")}
 header,main,nav.bottom,.modal,.toast{position:relative;z-index:2}
 .home-hero{
   display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
@@ -275,14 +268,23 @@ footer{padding-bottom:4px}
 .birds.fly{animation:bird-fly 2.5s ease-in-out forwards}
 @keyframes bird-sway{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1deg)}}
 @keyframes bird-fly{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}100%{transform:translate3d(-75vw,-25vh,0) rotate(9deg);opacity:0}}
-.particle{position:fixed;top:-40px;z-index:3;pointer-events:none;line-height:1;animation:fall linear forwards;text-shadow:0 0 6px rgba(255,255,255,0.4)}
-@keyframes fall{to{transform:translateY(110vh) rotate(25deg);opacity:0.1}}
+.heart-particle {
+  position: fixed;
+  top: -50px;
+  z-index: 100;
+  pointer-events: none;
+  line-height: 1;
+  animation: heart-fall linear forwards;
+  text-shadow: 0 0 8px rgba(255,255,255,0.6);
+}
+@keyframes heart-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.35; }
+  100% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
+}
 @media(max-width:900px){
-  .bg-decor-left,.bg-decor-right{width:12vw;opacity:.5}
   .birds{width:95px}
 }
 @media(max-width:639px){
-  .bg-decor-left,.bg-decor-right{display:none}
   .home-hero{grid-template-columns:1fr 1fr;min-height:190px;gap:2px}
   .home-hero .sos-big{padding:12px 11px}
   .home-hero .sos-big b{font-size:16px}
@@ -297,11 +299,12 @@ footer{padding-bottom:4px}
   .home-hero-art{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-  .birds,.birds.fly,.particle{animation:none!important}
+  .birds,.birds.fly,.heart-particle{animation:none!important}
 }
 
 
-/* Фоновая комната и полупрозрачная подложка контента */
+/* Полноэкранный фон комнаты и полупрозрачная центральная колонка */
+html, body { background:transparent !important; }
 body::before {
   content:"";
   position:fixed;
@@ -310,15 +313,15 @@ body::before {
   pointer-events:none;
   background-image:url("images/Repair (17).png");
   background-size:cover;
-  background-position:center;
+  background-position:center center;
   background-repeat:no-repeat;
-  filter:brightness(1.05) saturate(0.85);
+  filter:brightness(1.1) saturate(0.8) contrast(0.95);
 }
 .bg-decor-left, .bg-decor-right { display:none !important; }
-main, .content, .page-content, .page {
+.wrap, main, .body, .content, .page-content, .page {
   background:rgba(255,255,255,0.2) !important;
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
   border:none !important;
   box-shadow:none !important;
 }
@@ -331,8 +334,6 @@ main, .content, .page-content, .page {
 <body>
 
 <!-- Fixed botanical room decoration -->
-<div class="bg-decor-left" aria-hidden="true"></div>
-<div class="bg-decor-right" aria-hidden="true"></div>
 
 <header>
   <div class="wrap">
@@ -938,23 +939,23 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
 
 <script>
 (function(){
-  const colors=['#f4b6c2','#ffffff','#b8b8b8'];
+  const colors=['#f4b6c2','#ffffff','#c0c0c0'];
   let n=0,last=0,t=null,go=false;
   function spawn(){
     const now=Date.now();
-    if(now-last<60||n>=40)return;
+    if(now-last<50||n>=50)return;
     last=now;n++;
     const p=document.createElement('span');
-    p.className='particle';
+    p.className='heart-particle';
     p.textContent='♥';
-    const size=12+Math.random()*28;
+    const size=16+Math.random()*32;
     p.style.left=Math.random()*100+'vw';
     p.style.fontSize=size+'px';
     p.style.color=colors[Math.floor(Math.random()*colors.length)];
-    p.style.opacity='0.2';
-    p.style.animationDuration=(5+Math.random()*4)+'s';
+    p.style.opacity='0.35';
+    p.style.animationDuration=(4+Math.random()*3)+'s';
     document.body.appendChild(p);
-    setTimeout(()=>{p.remove();n--;},9000);
+    setTimeout(()=>{p.remove();n--;},7000);
   }
   window.addEventListener('scroll',()=>{
     if(!go){go=true;spawn();}
