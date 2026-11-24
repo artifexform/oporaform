@@ -926,24 +926,24 @@ function plural(n, f){ const m = n % 10, h = n % 100; return f[(m===1 && h!==11)
 function renderSection(id){
   const s = SECS[id]; if (!s) return renderHome();
   const sectionImages = {
-    'sec-0':'00_glavnaya-mysl.jpg',
-    'sec-1':'01_pochemu-ssorimsya.jpg',
-    'sec-2':'02_bezopasnost.jpg',
-    'sec-3':'03_dogovorennosti.jpg',
-    'sec-4':'04_pravila.jpg',
-    'sec-5':'05_krasnye-flagi.jpg',
-    'sec-6':'06_algoritmy.jpg',
-    'sec-7':'07_svyaz-v-shtorm.jpg',
-    'sec-8':'08_ritualy.jpg',
-    'sec-9':'09_samoregulyatsiya.jpg',
-    'sec-10':'10_spasayushchie-frazy.jpg',
-    'sec-11':'11_glubokie-voprosy.jpg',
-    'sec-12':'12_terapiya.jpg',
-    'sec-13':'13_pravilnoe-dvizhenie.jpg',
-    'sec-14':'14_knigi-i-filmy.jpg',
-    'sec-16':'16_ekstrennaya-pomoshch.jpg',
-    'sec-17':'17_glavny-vyvod.jpg',
-    'sec-18':'18_shablon-izmeneniy.jpg'
+    'sec-0':'00_glavnaya-mysl.png',
+    'sec-1':'01_pochemu-ssorimsya.png',
+    'sec-2':'02_bezopasnost.png',
+    'sec-3':'03_dogovorennosti.png',
+    'sec-4':'04_pravila.png',
+    'sec-5':'05_krasnye-flagi.png',
+    'sec-6':'06_algoritmy.png',
+    'sec-7':'07_svyaz-v-shtorm.png',
+    'sec-8':'08_ritualy.png',
+    'sec-9':'09_samoregulyatsiya.png',
+    'sec-10':'10_spasayushchie-frazy.png',
+    'sec-11':'11_glubokie-voprosy.png',
+    'sec-12':'12_terapiya.png',
+    'sec-13':'13_pravilnoe-dvizhenie.png',
+    'sec-14':'14_knigi-i-filmy.png',
+    'sec-16':'16_ekstrennaya-pomoshch.png',
+    'sec-17':'17_glavny-vyvod.png',
+    'sec-18':'18_shablon-izmeneniy.png'
   };
   const sectionImage = sectionImages[id] || '00_glavnaya-mysl.jpg';
   view.innerHTML = `<div class="section-page"><div class="crumbs"><a data-go="#sections">Разделы</a></div><h1>${esc(s.code)}. ${esc(s.title)}</h1><div class="page-illustration section-banner"><img src="images/${sectionImage}" width="1500" height="600" alt="Иллюстрация: ${esc(s.title)}" loading="lazy"></div><div class="list">${s.children.map(c => rowFor(c)).join('')}</div></div>`;
