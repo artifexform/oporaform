@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Как быть, когда сложно</title>
+<title>Вместе легче — отношения, понимание, рост</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -201,16 +201,14 @@ details.more[open] summary::after{transform:rotate(180deg)}
 }
 
 
-/* Decorative side illustrations, bullfinches and seasonal scroll particles */
+/* Decorative side backgrounds, bullfinches and seasonal scroll particles */
 .bg-decor-left,.bg-decor-right{
   position:fixed;top:0;bottom:0;width:min(19vw,260px);
   z-index:0;pointer-events:none;opacity:.30;overflow:hidden;
+  background-repeat:no-repeat;background-size:cover;background-position:center;
 }
-.bg-decor-left{left:0}
-.bg-decor-right{right:0}
-.bg-decor-left img,.bg-decor-right img{
-  display:block;width:100%;height:100%;object-fit:cover;object-position:center;
-}
+.bg-decor-left{left:0;background-image:url("images/Repair (1).png")}
+.bg-decor-right{right:0;background-image:url("images/Repair (17).png")}
 header,main,nav.bottom{position:relative;z-index:2}
 .birds{
   position:fixed;top:10%;right:2%;width:140px;z-index:5;
@@ -257,25 +255,180 @@ header,main,nav.bottom{position:relative;z-index:2}
 }
 @media(prefers-reduced-motion:reduce){.birds,.birds.fly,.particle{animation:none!important}}
 
+
+/* ===== Homepage redesign: warm editorial landing page ===== */
+:root{
+  --bg:#f5f0e8;--surface:#fff;--surface2:#faf6f0;--ink:#2a2a2a;--muted:#7a7a7a;
+  --line:#e8dfd4;--accent:#2d6a5a;--accent-ink:#fff;--accent-soft:#e5eee8;
+  --red:#c45a3c;--red-soft:#f5e4dd;--radius:18px;--shadow:0 5px 18px rgba(67,49,34,.10);
+}
+[data-theme="dark"]{
+  --bg:#171a18;--surface:#222724;--surface2:#2a302c;--ink:#f0eee8;--muted:#b3b8b2;
+  --line:#3b443e;--accent:#70aa92;--accent-ink:#13231b;--accent-soft:#263d31;
+  --red:#dc8064;--red-soft:#412a23;--shadow:none;
+}
+body{background:var(--bg);color:var(--ink)}
+.wrap{max-width:1240px}
+.site-header{position:sticky;top:0;background:rgba(250,246,240,.94);border-bottom:1px solid rgba(120,98,75,.12);backdrop-filter:blur(14px)}
+[data-theme="dark"] .site-header{background:rgba(23,26,24,.94)}
+.header-shell{padding-top:8px}
+.hrow{min-height:66px;gap:24px;padding:8px 0}
+.brand{display:flex;align-items:center;gap:10px;flex:0 0 245px;white-space:normal;overflow:visible}
+.brand-heart{font-size:38px;line-height:1;color:var(--red)}
+.brand-copy{display:flex;flex-direction:column;line-height:1.2}
+.brand-copy strong{font-size:19px;letter-spacing:-.02em}
+.brand-copy small{font-size:12px;color:var(--muted);font-weight:400;margin-top:3px}
+.desktop-nav{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,30px);flex:1}
+.desktop-nav a{font-size:14px;font-weight:600;text-decoration:none;color:var(--muted);white-space:nowrap;cursor:pointer}
+.desktop-nav a.active,.desktop-nav a:hover{color:var(--accent)}
+.header-actions{display:flex;align-items:center;gap:9px}
+.header-actions .icon-btn{height:42px;border-radius:12px}
+.help-action{font-size:14px!important}
+.account-btn{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important;font-weight:700}
+.search{max-width:100%;padding:0 0 10px}
+.search input{height:44px;background:var(--surface);font-size:15px}
+.search-toggle{background:transparent}
+main{padding:0 0 100px;position:relative;z-index:1}
+.hero-section{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;gap:24px;min-height:510px;padding:40px 0 28px;position:relative}
+.hero-copy{position:relative;z-index:2;padding:18px 0 24px 4px}
+.eyebrow{font-size:12px;letter-spacing:.13em;font-weight:700;color:var(--accent);margin-bottom:18px}
+.hero-copy h1{font-size:clamp(36px,4.3vw,62px);line-height:1.02;letter-spacing:-.045em;margin:0 0 16px}
+.hero-copy h1 span,.hero-copy h1 strong{display:block}
+.hero-copy h1 span{color:var(--red)}
+.hero-copy h1 strong{color:var(--ink);font-weight:700}
+.hero-subtitle{font-size:25px;margin:0 0 12px;color:var(--ink)}
+.hero-description{font-size:17px;line-height:1.65;color:var(--muted);max-width:510px;margin:0 0 24px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.hero-buttons .btn{flex:0 0 auto;min-width:160px;border-radius:12px;padding:13px 20px}
+.hero-primary{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.hero-secondary{background:transparent!important;border:1px solid var(--accent)!important;color:var(--accent)!important}
+.hero-art{position:relative;min-height:430px;display:flex;align-items:flex-end;justify-content:center}
+.hero-picture-frame{width:100%;max-width:650px;position:relative;z-index:1}
+.hero-picture-frame img{width:100%;height:auto;max-height:465px;object-fit:contain;display:block;filter:drop-shadow(0 14px 18px rgba(69,45,28,.10))}
+.wall-note{position:absolute;z-index:2;background:#f4e4d0;border:7px solid #d2ad85;box-shadow:0 8px 18px rgba(83,55,32,.14);color:#775c43;font-family:Georgia,serif;font-style:italic;text-align:center;display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:1.35}
+.wall-note span{font-size:26px;color:var(--red)}
+.wall-note-small{left:8%;top:10px;width:132px;height:94px;transform:rotate(-2deg);font-size:13px}
+.wall-note-large{right:0;top:0;width:142px;height:116px;transform:rotate(2deg);font-size:18px}
+.benefits-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:8px 0 28px}
+.benefit-card{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;box-shadow:var(--shadow);min-height:116px}
+.benefit-icon{flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:25px}
+.heart-icon{color:var(--red);background:var(--red-soft)}
+.benefit-card b{display:block;font-size:15px;line-height:1.3;margin:1px 0 6px}
+.benefit-card p{font-size:13px;line-height:1.45;color:var(--muted);margin:0}
+.quote-banner{display:flex;align-items:center;gap:18px;background:var(--accent);color:#fff;border-radius:18px;padding:21px 26px;margin:0 0 34px;box-shadow:0 8px 22px rgba(45,106,90,.16)}
+.quote-sprout{font-size:34px;line-height:1}
+.quote-banner p{font-size:18px;font-weight:600;line-height:1.4;margin:0;flex:1}
+.quote-link{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.65);border-radius:11px;padding:10px 15px;white-space:nowrap;font-weight:600;font-size:14px}
+.home-content{max-width:1120px;margin:0 auto}
+.home-content h2{font-size:22px;margin:28px 0 13px;letter-spacing:-.02em}
+.home-content .feels{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.home-content .feel{min-height:70px;padding:14px 16px;background:var(--surface);border-radius:15px;font-size:16px;box-shadow:var(--shadow)}
+.home-content .roles{max-width:600px;background:rgba(230,219,204,.55);padding:4px}
+.home-content .role-note{margin-top:7px}
+.home-content .tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.home-content .situation-card{min-height:104px;padding:16px;border-radius:15px}
+.home-content .chips{gap:9px}
+.home-content .chip{background:var(--surface);font-size:14px;padding:9px 14px}
+.home-content .list{gap:8px}
+.home-content .row{background:var(--surface);border-radius:13px;box-shadow:0 2px 8px rgba(67,49,34,.05)}
+.home-content footer{padding:14px 0 4px}
+.bg-decor-left,.bg-decor-right{opacity:.14;z-index:0;pointer-events:none}
+.birds{z-index:4}
+@media(min-width:1500px){.wrap{max-width:1320px}.hero-section{min-height:560px}}
+@media(max-width:900px){
+  .wrap{max-width:760px}
+  .desktop-nav{display:none}
+  .brand{flex:1}
+  .header-actions{gap:6px}
+  .help-action{font-size:0!important;min-width:42px;padding:0!important}
+  .help-action svg{width:19px;height:19px}
+  .account-btn{display:none!important}
+  .hero-section{grid-template-columns:1fr 1fr;gap:8px;min-height:380px;padding:25px 0 12px}
+  .hero-art{min-height:310px}
+  .hero-copy h1{font-size:clamp(30px,5vw,44px)}
+  .hero-subtitle{font-size:20px}
+  .hero-description{font-size:15px}
+  .wall-note-small{width:100px;height:72px;font-size:10px}
+  .wall-note-large{width:108px;height:88px;font-size:14px}
+  .benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-content .feels,.home-content .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .header-shell{padding-top:3px}
+  .hrow{min-height:58px;gap:8px}
+  .brand-heart{font-size:30px}
+  .brand-copy strong{font-size:16px}
+  .brand-copy small{font-size:10px}
+  .header-actions .icon-btn{height:38px;min-width:38px}
+  .search-toggle{display:none!important}
+  .search{padding-bottom:8px}
+  .hero-section{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:24px 0 10px}
+  .hero-copy{padding:0 2px}
+  .eyebrow{font-size:10px;margin-bottom:12px}
+  .hero-copy h1{font-size:clamp(35px,10vw,48px)}
+  .hero-subtitle{font-size:21px}
+  .hero-description{font-size:15px;max-width:none}
+  .hero-art{min-height:235px;margin-top:0}
+  .hero-picture-frame{max-width:440px}
+  .wall-note-small{left:2%;top:2px;width:86px;height:62px;border-width:4px;font-size:9px}
+  .wall-note-large{right:0;top:0;width:94px;height:74px;border-width:4px;font-size:12px}
+  .benefits-grid{grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 20px}
+  .benefit-card{padding:12px 10px;gap:8px;min-height:104px}
+  .benefit-icon{width:30px;height:30px;flex-basis:30px;font-size:20px}
+  .benefit-card b{font-size:13px}
+  .benefit-card p{font-size:11px}
+  .quote-banner{gap:10px;padding:16px 13px;margin-bottom:24px}
+  .quote-banner p{font-size:14px}
+  .quote-link{font-size:12px;padding:8px 9px}
+  .quote-sprout{font-size:26px}
+  .home-content h2{font-size:19px;margin-top:23px}
+  .home-content .feels,.home-content .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .home-content .feel{font-size:14px;min-height:58px;padding:10px}
+  .home-content .situation-card{min-height:95px;padding:12px}
+  .bg-decor-left,.bg-decor-right{display:none}
+}
+@media(prefers-reduced-motion:reduce){.hero-picture-frame img{filter:none}}
+
+
+@media(min-width:901px){
+  .site-header .search{display:none}
+  .site-header .search.search-open{display:block;max-width:720px;margin:0 auto}
+}
 </style>
 </head>
 <body>
-<!-- Fixed decorative illustrations -->
-<div class="bg-decor-left" aria-hidden="true"><img src="images/Repair (1).png" alt="" loading="lazy"></div>
-<div class="bg-decor-right" aria-hidden="true"><img src="images/Repair (17).png" alt="" loading="lazy"></div>
+<!-- Fixed decorative backgrounds (CSS only) -->
+<div class="bg-decor-left" aria-hidden="true"></div>
+<div class="bg-decor-right" aria-hidden="true"></div>
 <div class="birds" aria-hidden="true"><img src="images/Repair (11).png" width="140" height="105" alt="" loading="lazy"></div>
-<header>
-  <div class="wrap">
+<header class="site-header">
+  <div class="wrap header-shell">
     <div class="hrow">
-      <a class="brand" data-go="#home">Как быть, когда сложно</a>
-      <button class="icon-btn sos" id="helpBtn" type="button" aria-label="Экстренная помощь">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        Помощь
-      </button>
-      <button class="icon-btn role-pill" id="rolePill" type="button" aria-label="Кто читает"></button>
-      <button class="icon-btn" id="themeBtn" type="button" aria-label="Сменить тему"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a class="brand" data-go="#home" aria-label="Вместе легче — на главную">
+        <span class="brand-heart" aria-hidden="true">♥</span>
+        <span class="brand-copy"><strong>Вместе легче</strong><small>отношения · понимание · рост</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a class="active" data-go="#home">Главная</a>
+        <a data-go="#sections">Курсы</a>
+        <a data-go="#sections">Полезные материалы</a>
+        <a data-go="#card-s0">О нас</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn search-toggle" id="searchToggle" type="button" aria-label="Открыть поиск">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        </button>
+        <button class="icon-btn sos help-action" id="helpBtn" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          Нужна помощь?
+        </button>
+        <button class="icon-btn account-btn" id="rolePill" type="button" aria-label="Переключить профиль">Личный кабинет</button>
+        <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Сменить тему">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
     </div>
-    <div class="search">
+    <div class="search" id="searchPanel">
       <input id="q" type="search" placeholder="Что случилось? молчит, плачет, пауза…" autocomplete="off" enterkeyhint="search">
       <button class="clear" id="qClear" type="button" aria-label="Очистить">×</button>
     </div>
@@ -405,7 +558,7 @@ const ROLE_NAME = {v: 'Виктор', vi: 'Виктория', both: 'Оба'};
 function applyRole(){
   document.body.classList.toggle('role-v', role === 'v');
   document.body.classList.toggle('role-vi', role === 'vi');
-  const p = $('#rolePill'); p.textContent = ROLE_NAME[role]; p.classList.toggle('on', role !== 'both');
+  const p = $('#rolePill'); p.textContent = 'Личный кабинет'; p.title = 'Текущий профиль: ' + ROLE_NAME[role]; p.classList.toggle('on', role !== 'both');
 }
 function setRole(r){ role = r; store.set('role', r); applyRole(); toast(r === 'both' ? 'Подсказки для обоих' : 'Подсказки для: ' + ROLE_NAME[r]); }
 applyRole();
@@ -561,31 +714,77 @@ const TILES_ROLE = {
   ],
 };
 function renderHome(){
-  const tiles = (TILES_ROLE[role] || TILES).map(([id, t, s]) => `<a class="tile" data-go="${id === 'pause' ? '#pause' : '#card-' + id}"><b>${t}</b><small>${s}</small></a>`).join('');
-  const syms = DATA.symptoms.slice(0, 10).map((s, i) => `<a class="chip" data-sym="${i}">${esc(s.phrase)}</a>`).join('');
+  const tiles = (TILES_ROLE[role] || TILES).map(([id, t, s]) =>
+    `<a class="tile situation-card" data-go="${id === 'pause' ? '#pause' : '#card-' + id}"><b>${t}</b><small>${s}</small></a>`
+  ).join('');
+  const syms = DATA.symptoms.slice(0, 10).map((s, i) =>
+    `<a class="chip" data-sym="${i}">${esc(s.phrase)}</a>`
+  ).join('');
   const rec = recent.filter(id => CARDS[id]).slice(0, 4);
+
   view.innerHTML = `
-    <button class="sos-big" type="button" data-go="#conflict"><b>СЕЙЧАС КОНФЛИКТ</b><span>Пошагово: стоп-кран → остывание → разбор → закрытие</span></button>
-    <h2 style="margin-top:22px">Что ты сейчас чувствуешь?</h2>
-    <div class="feels">${FEELS.map(f => `<a class="feel" data-go="#feel-${f.id}">${esc(f.t)}</a>`).join('')}</div>
-    <h2>Кто читает?</h2>
-    <div class="roles" role="group" aria-label="Кто читает">
-      <button type="button" data-role="v" class="${role==='v'?'on':''}" aria-pressed="${role==='v'}">Я Виктор</button>
-      <button type="button" data-role="vi" class="${role==='vi'?'on':''}" aria-pressed="${role==='vi'}">Я Виктория</button>
-      <button type="button" data-role="both" class="${role==='both'?'on':''}" aria-pressed="${role==='both'}">Оба</button>
-    </div>
-    <p class="role-note">${role==='both' ? 'Выбери себя: плитки ниже станут твоими, а в карточках сверху появится «Твоя часть».' : 'Плитки ниже — для тебя. В карточках сверху появится «Твоя часть», чужие пункты станут бледнее.'}</p>
-    <h2>${role==='both' ? 'Что происходит?' : 'Что происходит у тебя?'}</h2>
-    <div class="tiles">${tiles}</div>
-    <h2>Если звучит…</h2>
-    <div class="chips">${syms}</div>
-    ${rec.length ? `<h2>Недавно открывали</h2><div class="list">${rec.map(id => rowFor(id)).join('')}</div>` : ''}
-    <h2>Главное</h2>
-    <div class="list">${rowFor('s0', 'Пять мыслей, на которых держится весь документ')}${rowFor('s10', 'Готовые фразы с кнопкой «копировать»')}${rowFor('s7', 'Коды и правила связи в аврал')}</div>
-    <footer>Обновлено ${UPDATED}. <a data-go="#card-s18">Шаблон изменений</a></footer>`;
-  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration home-illustration"><img src="images/Repair (2).png" alt="Иллюстрация пары на диване" loading="lazy"></div>`);
+    <section class="hero-section" aria-label="Вместе легче">
+      <div class="hero-copy">
+        <div class="eyebrow">КОНФЛИКТ — НЕ КОНЕЦ, А НАЧАЛО ДИАЛОГА</div>
+        <h1><span>ИЗ КОНФЛИКТА</span><strong>В ОТНОШЕНИЯХ</strong></h1>
+        <h2 class="hero-subtitle">Учимся слышать друг друга</h2>
+        <p class="hero-description">Практические инструменты, которые помогут спокойно обсуждать сложные темы, понимать чувства и находить решения вместе.</p>
+        <div class="hero-buttons">
+          <button class="btn hero-primary" type="button" id="startJourney">Начать путь <span aria-hidden="true">→</span></button>
+          <button class="btn hero-secondary" type="button" id="howItWorks">Как это работает</button>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-picture-frame"><img src="images/Repair (2).png" alt="Пара спокойно разговаривает на диване" loading="lazy"></div>
+        <div class="wall-note wall-note-small">РАЗГОВОР<br>СБЛИЖАЕТ <span>♡</span></div>
+        <div class="wall-note wall-note-large">Больше<br>понимания <span>♡</span></div>
+      </div>
+    </section>
+
+    <section class="benefits-grid" aria-label="Преимущества">
+      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">☁</span><div><b>Спокойный диалог</b><p>Говорим без обвинений и крика</p></div></article>
+      <article class="benefit-card"><span class="benefit-icon heart-icon" aria-hidden="true">♡</span><div><b>Слышим чувства</b><p>Учимся понимать настоящие потребности</p></div></article>
+      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">⌁</span><div><b>Ищем решения</b><p>Находим выход вместе, а не по отдельности</p></div></article>
+      <article class="benefit-card"><span class="benefit-icon sprout-icon" aria-hidden="true">♧</span><div><b>Укрепляем отношения</b><p>Больше доверия, тепла и поддержки</p></div></article>
+    </section>
+
+    <section class="quote-banner" id="howBanner">
+      <span class="quote-sprout" aria-hidden="true">♧</span>
+      <p>Конфликт — это не конец, а начало более честного разговора</p>
+      <a class="quote-link" data-go="#card-s0">Узнать больше <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="home-content" id="feelingsSection">
+      <h2>Что ты сейчас чувствуешь?</h2>
+      <div class="feels">${FEELS.map(f => `<a class="feel" data-go="#feel-${f.id}">${esc(f.t)}</a>`).join('')}</div>
+
+      <h2>Кто читает?</h2>
+      <div class="roles" role="group" aria-label="Кто читает">
+        <button type="button" data-role="v" class="${role==='v'?'on':''}" aria-pressed="${role==='v'}">Я Виктор</button>
+        <button type="button" data-role="vi" class="${role==='vi'?'on':''}" aria-pressed="${role==='vi'}">Я Виктория</button>
+        <button type="button" data-role="both" class="${role==='both'?'on':''}" aria-pressed="${role==='both'}">Оба</button>
+      </div>
+      <p class="role-note">${role==='both' ? 'Выбери себя: плитки ниже станут твоими, а в карточках сверху появится «Твоя часть».' : 'Плитки ниже — для тебя. В карточках сверху появится «Твоя часть», чужие пункты станут бледнее.'}</p>
+
+      <h2>${role==='both' ? 'Что происходит?' : 'Что происходит у тебя?'}</h2>
+      <div class="tiles">${tiles}</div>
+
+      <h2>Если звучит…</h2>
+      <div class="chips">${syms}</div>
+
+      ${rec.length ? `<h2>Недавно открывали</h2><div class="list">${rec.map(id => rowFor(id)).join('')}</div>` : ''}
+
+      <h2>Главное</h2>
+      <div class="list">${rowFor('s0', 'Пять мыслей, на которых держится весь документ')}${rowFor('s10', 'Готовые фразы с кнопкой «копировать»')}${rowFor('s7', 'Коды и правила связи в аврал')}</div>
+      <footer>Обновлено ${UPDATED}. <a data-go="#card-s18">Шаблон изменений</a></footer>
+    </section>`;
+
   view.querySelectorAll('[data-role]').forEach(b => b.onclick = () => { setRole(b.dataset.role); renderHome(); });
-  view.querySelectorAll('[data-sym]').forEach(a => a.onclick = e => { e.preventDefault(); const s = DATA.symptoms[+a.dataset.sym]; $('#q').value = s.phrase.replace(/[«»]/g, ''); onSearch(); });
+  view.querySelectorAll('[data-sym]').forEach(a => a.onclick = e => { e.preventDefault(); const symptom = DATA.symptoms[+a.dataset.sym]; $('#q').value = symptom.phrase.replace(/[«»]/g, ''); onSearch(); });
+  const startButton = $('#startJourney');
+  if (startButton) startButton.onclick = () => $('#feelingsSection').scrollIntoView({behavior:'smooth', block:'start'});
+  const howButton = $('#howItWorks');
+  if (howButton) howButton.onclick = () => $('#howBanner').scrollIntoView({behavior:'smooth', block:'center'});
 }
 function renderSections(){
   view.innerHTML = `<h1>Разделы</h1><div class="list">${DATA.sections.map(s => {
@@ -599,6 +798,10 @@ function plural(n, f){ const m = n % 10, h = n % 100; return f[(m===1 && h!==11)
 function renderSection(id){
   const s = SECS[id]; if (!s) return renderHome();
   view.innerHTML = `<div class="crumbs"><a data-go="#sections">Разделы</a></div><h1>${esc(s.code)}. ${esc(s.title)}</h1><div class="list">${s.children.map(c => rowFor(c)).join('')}</div>`;
+  const sectionImages = ['Repair (3).png','Repair (7).png','Repair (11).png','Repair (16).png','Repair (10).png','Repair (12).png','Repair (13).png','Repair (14).png','Repair (15).png','Repair (18).png'];
+  const sectionIndex = DATA.sections.findIndex(section => section.id === id);
+  const sectionImage = sectionImages[(sectionIndex >= 0 ? sectionIndex : 0) % sectionImages.length];
+  view.querySelector('h1').insertAdjacentHTML('afterend', `<div class="page-illustration section-card-illustration"><img src="images/${sectionImage}" alt="" loading="lazy"></div>`);
 }
 const CHECK = new Set(['s13-5', 's13-1']);
 function renderCard(id){
@@ -843,6 +1046,16 @@ $('#q').addEventListener('input', onSearch);
 $('#q').addEventListener('keydown', e => { if (e.key === 'Enter'){ const a = view.querySelector('a.row, a.chip'); if (a){ e.preventDefault(); a.click(); $('#q').blur(); } } });
 $('#qClear').onclick = () => { $('#q').value = ''; onSearch(); $('#q').focus(); };
 
+/* Desktop search toggle */
+const searchToggle = $('#searchToggle');
+if (searchToggle) {
+  searchToggle.onclick = () => {
+    const panel = $('#searchPanel');
+    panel.classList.toggle('search-open');
+    if (panel.classList.contains('search-open')) $('#q').focus();
+  };
+}
+
 /* help modal */
 function openHelp(){ $('#helpModal').classList.add('open'); }
 $('#helpBtn').onclick = openHelp;
@@ -855,57 +1068,76 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
 </script>
 
 <script>
-/* Seasonal particles: create only while the page is being scrolled. */
+/* Seasonal SVG particles: create only while the page is being scrolled. */
 (() => {
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
-  const month = new Date().getMonth();
-  const seasonEmoji = month >= 2 && month <= 4 ? '🌸' : month >= 5 && month <= 7 ? '🍃' : month >= 8 && month <= 10 ? '🍁' : '❄️';
+
+  const seasonSVG = {
+    winter: '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07" stroke="#b8d4e8" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>',
+    autumn: '<svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2C8 6 4 10 4 14c0 3 2 6 5 7 1-2 2-4 3-6 1 2 2 4 3 6 3-1 5-4 5-7 0-4-4-8-8-12z" fill="#c97b3a" opacity="0.85"/></svg>',
+    spring: '<svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="10" r="3" fill="#f4c2d0"/><circle cx="8" cy="12" r="2.5" fill="#f9d5e0"/><circle cx="16" cy="12" r="2.5" fill="#f9d5e0"/><circle cx="10" cy="7" r="2.5" fill="#f9d5e0"/><circle cx="14" cy="7" r="2.5" fill="#f9d5e0"/><path d="M12 13v9" stroke="#6a9a5a" stroke-width="1.5"/></svg>',
+    summer: '<svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="4" fill="#f5d76e"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="#f5d76e" stroke-width="1.5" stroke-linecap="round"/></svg>'
+  };
+
+  const m = new Date().getMonth();
+  const seasonKey = (m >= 2 && m <= 4) ? 'spring' :
+    (m >= 5 && m <= 7) ? 'summer' :
+    (m >= 8 && m <= 10) ? 'autumn' : 'winter';
+
   const MAX_PARTICLES = 25;
   const active = new Set();
   let scrollStopTimer = null;
   let spawning = false;
   let spawnTimer = null;
-  function spawnParticle(){
+
+  function spawnParticle() {
     if (active.size >= MAX_PARTICLES) return;
-    const particle = document.createElement('span');
-    particle.className = 'particle';
-    particle.textContent = seasonEmoji;
-    particle.setAttribute('aria-hidden', 'true');
-    particle.style.left = Math.random() * 100 + 'vw';
-    particle.style.animationDuration = (6 + Math.random() * 4) + 's';
-    particle.style.opacity = String(.6 + Math.random() * .3);
-    document.body.appendChild(particle);
-    active.add(particle);
-    const remove = () => { if (active.delete(particle)) particle.remove(); };
-    particle.addEventListener('animationend', remove, {once:true});
+    const p = document.createElement('span');
+    p.className = 'particle';
+    p.innerHTML = seasonSVG[seasonKey];
+    p.style.display = 'flex';
+    p.style.alignItems = 'center';
+    p.style.justifyContent = 'center';
+    p.setAttribute('aria-hidden', 'true');
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (6 + Math.random() * 4) + 's';
+    p.style.opacity = String(.6 + Math.random() * .3);
+    document.body.appendChild(p);
+    active.add(p);
+    const remove = () => { if (active.delete(p)) p.remove(); };
+    p.addEventListener('animationend', remove, { once: true });
     window.setTimeout(remove, 11000);
   }
-  function startSpawning(){
+
+  function startSpawning() {
     if (spawning) return;
     spawning = true;
     spawnParticle();
     spawnTimer = window.setInterval(spawnParticle, 150);
   }
-  function stopSpawning(){
+
+  function stopSpawning() {
     spawning = false;
     if (spawnTimer !== null) window.clearInterval(spawnTimer);
     spawnTimer = null;
   }
+
   window.addEventListener('scroll', () => {
     startSpawning();
     if (scrollStopTimer !== null) window.clearTimeout(scrollStopTimer);
     scrollStopTimer = window.setTimeout(stopSpawning, 1500);
-  }, {passive:true});
+  }, { passive: true });
 })();
+</script>
 
-/* Rare bullfinch flight. */
+
+<script>
+/* Bullfinches: gentle sway with an occasional flight */
 (() => {
   const birds = document.querySelector('.birds');
   if (!birds || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
   const fly = () => {
-    birds.classList.remove('fly');
-    void birds.offsetWidth;
     birds.classList.add('fly');
     window.setTimeout(() => birds.classList.remove('fly'), 2500);
   };
