@@ -379,9 +379,26 @@ main{padding:0 0 100px;position:relative;z-index:1}
   .site-header .search{display:none}
   .site-header .search.search-open{display:block;max-width:720px;margin:0 auto}
 }
+.birds{position:fixed;top:9%;right:2%;width:150px;z-index:5;pointer-events:none;animation:perch 5s ease-in-out infinite}
+.birds svg{width:100%;height:auto;display:block}
+.birds .wing{transform-origin:50% 40%;animation:flap 4s ease-in-out infinite}
+@keyframes perch{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+@keyframes flap{0%,88%,100%{transform:rotate(0)}92%{transform:rotate(-22deg)}96%{transform:rotate(-10deg)}}
+.birds.fly{animation:fly 2.6s ease-in-out}
+@keyframes fly{0%{transform:translate(0,0)}25%{transform:translate(-35vw,-70px)}60%{transform:translate(-55vw,-25px)}100%{transform:translate(0,0)}}
+.particle{position:fixed;top:-36px;z-index:4;pointer-events:none;line-height:1;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+@media(max-width:900px){.birds{width:95px;top:6%}}
 </style>
 </head>
 <body>
+<div class="birds" aria-hidden="true">
+<svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 84 Q80 76 154 82" stroke="#6b4a35" stroke-width="4" fill="none" stroke-linecap="round"/>
+<g class="bird"><ellipse cx="52" cy="62" rx="22" ry="17" fill="#4a4a4f"/><ellipse cx="50" cy="66" rx="14" ry="11" fill="#c0463a"/><g class="head"><circle cx="62" cy="50" r="11" fill="#2a2a2d"/><path d="M70 48 l8 2 -8 3z" fill="#3a3a3d"/><circle class="eye" cx="65" cy="48" r="2" fill="#fff"/></g><g class="wing"><path d="M34 58 q-6 8 2 14 q10 -2 12 -10z" fill="#3a3a3f"/></g></g>
+<g class="bird"><ellipse cx="108" cy="64" rx="19" ry="15" fill="#8a8f94"/><ellipse cx="106" cy="68" rx="12" ry="9" fill="#a89a8f"/><g class="head"><circle cx="118" cy="53" r="10" fill="#6a6f74"/><path d="M125 51 l7 2 -7 3z" fill="#4a4a4d"/><circle class="eye" cx="121" cy="51" r="1.8" fill="#fff"/></g><g class="wing"><path d="M92 60 q-5 7 1 12 q9 -2 10 -9z" fill="#7a7f84"/></g></g>
+</svg>
+</div>
 <!-- Fixed decorative backgrounds (CSS only) -->
 <div class="bg-decor-left" aria-hidden="true"></div>
 <div class="bg-decor-right" aria-hidden="true"></div>
@@ -1114,6 +1131,26 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
     if (scrollStopTimer !== null) window.clearTimeout(scrollStopTimer);
     scrollStopTimer = window.setTimeout(stopSpawning, 1500);
   }, { passive: true });
+})();
+(function(){
+const m=new Date().getMonth();
+const set=(m>=2&&m<=4)?['🌸','🌼']:(m>=5&&m<=7)?['🍃','🌼']:(m>=8&&m<=10)?['🍁','🍂']:['❄️','❅'];
+let n=0,last=0,t=null,go=false;
+function spawn(){
+const now=Date.now();if(now-last<160||n>=22)return;
+last=now;n++;
+const p=document.createElement('span');p.className='particle';
+p.textContent=set[Math.floor(Math.random()*set.length)];
+p.style.left=Math.random()*100+'vw';
+p.style.fontSize=(14+Math.random()*14)+'px';
+p.style.opacity=(0.55+Math.random()*0.35).toFixed(2);
+p.style.animationDuration=(7+Math.random()*5)+'s';
+document.body.appendChild(p);
+setTimeout(()=>{p.remove();n--;},12000);
+}
+window.addEventListener('scroll',()=>{if(!go){go=true;spawn();}clearTimeout(t);t=setTimeout(()=>{go=false;},1500);},{passive:true});
+const b=document.querySelector('.birds');
+if(b)setInterval(()=>{if(Math.random()<0.3){b.classList.add('fly');setTimeout(()=>b.classList.remove('fly'),2600);}},30000);
 })();
 </script>
 
