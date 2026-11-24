@@ -299,7 +299,7 @@ footer{padding-bottom:4px}
   .home-hero-art{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-  .birds,.birds.fly,.heart-particle{animation:none!important}
+  .birds,.birds.fly{animation:none!important}
 }
 
 
@@ -940,10 +940,10 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
 <script>
 (function(){
   const colors=['#f4b6c2','#ffffff','#c0c0c0'];
-  let n=0,last=0,t=null,go=false;
+  let n=0,last=0;
   function spawn(){
     const now=Date.now();
-    if(now-last<50||n>=50)return;
+    if(now-last<120||n>=50)return;
     last=now;n++;
     const p=document.createElement('span');
     p.className='heart-particle';
@@ -957,11 +957,7 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
     document.body.appendChild(p);
     setTimeout(()=>{p.remove();n--;},7000);
   }
-  window.addEventListener('scroll',()=>{
-    if(!go){go=true;spawn();}
-    clearTimeout(t);
-    t=setTimeout(()=>{go=false;},1500);
-  },{passive:true});
+  window.addEventListener('scroll',spawn,{passive:true});
 })();
 
 /* Bird animation is enabled only if a real bullfinch asset is supplied. */
