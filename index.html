@@ -275,9 +275,8 @@ footer{padding-bottom:4px}
 .birds.fly{animation:bird-fly 2.5s ease-in-out forwards}
 @keyframes bird-sway{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1deg)}}
 @keyframes bird-fly{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}100%{transform:translate3d(-75vw,-25vh,0) rotate(9deg);opacity:0}}
-.particle{position:fixed;top:-24px;z-index:4;pointer-events:none;will-change:transform,opacity;
-  font-size:18px;line-height:1;animation:particle-fall linear forwards}
-@keyframes particle-fall{to{transform:translate3d(30px,110vh,0) rotate(300deg);opacity:0}}
+.particle{position:fixed;top:-40px;z-index:3;pointer-events:none;line-height:1;animation:fall linear forwards;text-shadow:0 0 6px rgba(255,255,255,0.4)}
+@keyframes fall{to{transform:translateY(110vh) rotate(25deg);opacity:0.1}}
 @media(max-width:900px){
   .bg-decor-left,.bg-decor-right{width:12vw;opacity:.5}
   .birds{width:95px}
@@ -302,24 +301,29 @@ footer{padding-bottom:4px}
 }
 
 
-/* точечная настройка фона и бокового декора */
-html, body, .site { background: #f5f0e8 !important; }
-.bg-decor-left, .bg-decor-right {
-  opacity: 0.3;
-  filter: brightness(1.15) saturate(0.6);
-}
+/* Фоновая комната и полупрозрачная подложка контента */
 body::before {
-  opacity: 0.3;
-  filter: brightness(1.15) saturate(0.6);
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background-image:url("images/Repair (17).png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter:brightness(1.05) saturate(0.85);
 }
-main, .wrap, .content, .page-content {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
+.bg-decor-left, .bg-decor-right { display:none !important; }
+main, .content, .page-content, .page {
+  background:rgba(255,255,255,0.2) !important;
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  border:none !important;
+  box-shadow:none !important;
 }
-.tile, .card, .feel, .chip {
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+.tile, .card, .feel, .chip, .row {
+  background:rgba(255,255,255,0.75) !important;
 }
 
 </style>
@@ -933,86 +937,30 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
 </script>
 
 <script>
-/* Seasonal particles: only active during scrolling; RAF is canceled after 1.5s idle. */
-(() => {
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) return;
-
-  const month = new Date().getMonth();
-  const season = month >= 2 && month <= 4 ? 'spring'
-    : month >= 5 && month <= 7 ? 'summer'
-    : month >= 8 && month <= 10 ? 'autumn' : 'winter';
-  const symbols = {
-    winter: ['♥'],
-    spring: ['♥'],
-    summer: ['♥'],
-    autumn: ['♥']
-  };
-  const MAX_PARTICLES = 45;
-  const particles = new Set();
-  let rafId = 0, stopTimer = 0, lastTime = 0, lastSpawn = 0;
-
-  function createParticle(now) {
-    if (particles.size >= MAX_PARTICLES) return;
-    const el = document.createElement('span');
-    el.className = 'particle';
-    el.textContent = symbols[season][Math.floor(Math.random() * symbols[season].length)];
-    el.style.left = (Math.random() * 100) + 'vw';
-    el.style.opacity = '0.2';
-    el.dataset.speed = String(.45 + Math.random() * .8);
-    el.dataset.x = String(Math.random() * 18 - 9);
-    el.dataset.y = '-24';
-    el.dataset.rot = String(Math.random() * 180);
-    el.dataset.size = String(12 + Math.random() * 20);
-    el.style.fontSize = el.dataset.size + 'px';
-    el.style.color = ['#e8a0b5', '#ffffff', '#a7a7a7'][Math.floor(Math.random() * 3)];
-    document.body.appendChild(el);
-    particles.add(el);
+(function(){
+  const colors=['#f4b6c2','#ffffff','#b8b8b8'];
+  let n=0,last=0,t=null,go=false;
+  function spawn(){
+    const now=Date.now();
+    if(now-last<60||n>=40)return;
+    last=now;n++;
+    const p=document.createElement('span');
+    p.className='particle';
+    p.textContent='♥';
+    const size=12+Math.random()*28;
+    p.style.left=Math.random()*100+'vw';
+    p.style.fontSize=size+'px';
+    p.style.color=colors[Math.floor(Math.random()*colors.length)];
+    p.style.opacity='0.2';
+    p.style.animationDuration=(5+Math.random()*4)+'s';
+    document.body.appendChild(p);
+    setTimeout(()=>{p.remove();n--;},9000);
   }
-
-  function animate(now) {
-    if (!lastTime) lastTime = now;
-    const dt = Math.min(40, now - lastTime);
-    lastTime = now;
-
-    if (now - lastSpawn > 130 && particles.size < MAX_PARTICLES) {
-      createParticle(now);
-      lastSpawn = now;
-    }
-
-    particles.forEach(el => {
-      const y = Number(el.dataset.y) + Number(el.dataset.speed) * dt * .075;
-      const x = Number(el.dataset.x) + Math.sin(now / 900 + Number(el.dataset.rot)) * .12;
-      el.dataset.y = String(y);
-      el.dataset.x = String(x);
-      el.style.transform = `translate3d(${x}px, ${y}vh, 0) rotate(${Number(el.dataset.rot) + y * 2}deg)`;
-      if (y > 110) {
-        particles.delete(el);
-        el.remove();
-      }
-    });
-
-    rafId = requestAnimationFrame(animate);
-  }
-
-  function start() {
-    if (!rafId) {
-      lastTime = 0;
-      lastSpawn = 0;
-      rafId = requestAnimationFrame(animate);
-    }
-    clearTimeout(stopTimer);
-    stopTimer = setTimeout(stop, 1500);
-  }
-
-  function stop() {
-    clearTimeout(stopTimer);
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = 0;
-    lastTime = 0;
-  }
-
-  window.addEventListener('scroll', start, { passive: true });
+  window.addEventListener('scroll',()=>{
+    if(!go){go=true;spawn();}
+    clearTimeout(t);
+    t=setTimeout(()=>{go=false;},1500);
+  },{passive:true});
 })();
 
 /* Bird animation is enabled only if a real bullfinch asset is supplied. */
