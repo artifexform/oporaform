@@ -303,14 +303,16 @@ footer{padding-bottom:4px}
 }
 
 
-/* Непрозрачный фон комнаты, прокручивается вместе со страницей */
-html, body { background:transparent !important; }
+/* Полноценный непрозрачный фон комнаты, движется при прокрутке страницы */
+html { background:transparent !important; }
 body {
+  min-height:100vh;
+  background-color:#f7efe7 !important;
   background-image:url("images/Repair (17).png") !important;
   background-size:cover !important;
   background-position:center top !important;
   background-repeat:no-repeat !important;
-  background-attachment:scroll !important;
+  background-attachment:local !important;
 }
 body::before { content:none !important; display:none !important; }
 .bg-decor-left, .bg-decor-right { display:none !important; }
