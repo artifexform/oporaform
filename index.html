@@ -674,6 +674,42 @@ html[data-theme="dark"] body.role-vi .stepbox [data-who="v"]{
   opacity:.82 !important;
 }
 
+
+/* Компактное всплывающее окно помощи рядом с кнопкой */
+#helpModal.modal{
+  position:fixed !important;
+  inset:auto !important;
+  display:none;
+  width:min(420px,calc(100vw - 24px));
+  max-height:min(76vh,680px);
+  overflow:auto;
+  z-index:1000 !important;
+  background:var(--surface) !important;
+  color:var(--ink) !important;
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
+  align-items:initial;
+  justify-content:initial;
+}
+#helpModal.modal.open{display:block !important}
+#helpModal .sheet{
+  width:100%;
+  max-width:none;
+  max-height:none;
+  overflow:visible;
+  padding:16px;
+  border-radius:18px;
+  background:transparent;
+  color:var(--ink);
+}
+#helpModal .sheet h2{font-size:19px;margin:0}
+#helpModal .tel{background:var(--surface2);color:var(--ink)}
+#helpModal .tel small{display:block;color:var(--muted);line-height:1.35}
+@media(max-width:520px){
+  #helpModal.modal{width:calc(100vw - 20px);max-height:72vh}
+}
+
 </style>
 </head>
 <body>
@@ -684,7 +720,7 @@ html[data-theme="dark"] body.role-vi .stepbox [data-who="v"]{
   <div class="wrap">
     <div class="hrow">
       <a class="brand" data-go="#home">Как быть, когда сложно</a>
-      <button class="icon-btn sos" id="helpBtn" type="button" aria-label="Экстренная помощь" onclick="var m=document.getElementById(\'helpModal\');if(m){m.style.display=\'flex\';m.style.zIndex=\'9999\';m.setAttribute(\'aria-hidden\',\'false\');}">
+      <button class="icon-btn sos" id="helpBtn" type="button" aria-label="Экстренная помощь">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
         Помощь
       </button>
@@ -709,11 +745,11 @@ html[data-theme="dark"] body.role-vi .stepbox [data-who="v"]{
   </div>
 </nav>
 
-<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" onclick="if(event.target===this){this.style.display=\'none\';this.setAttribute(\'aria-hidden\',\'true\');}">
+<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
   <div class="sheet">
     <div style="display:flex;align-items:center;gap:10px">
       <h2 id="helpTitle" style="flex:1">Экстренная помощь</h2>
-      <button class="icon-btn" type="button" data-close onclick="var m=document.getElementById(\'helpModal\');if(m){m.style.display=\'none\';m.setAttribute(\'aria-hidden\',\'true\');}">Закрыть</button>
+      <button class="icon-btn" type="button" data-close>Закрыть</button>
     </div>
     <p class="muted small" style="margin-top:0">Если есть угроза жизни, звоните 112. Номер можно нажать или набрать вручную.</p>
     <a class="tel" href="tel:112"><b>112</b><small>Единый номер экстренных служб</small></a>
@@ -734,15 +770,29 @@ html[data-theme="dark"] body.role-vi .stepbox [data-who="v"]{
 (() => {
   const showHelp = () => {
     const modal = document.getElementById('helpModal');
-    if (!modal) return;
+    const button = document.getElementById('helpBtn');
+    if (!modal || !button) return;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
+    modal.style.display = 'block';
+    modal.style.visibility = 'hidden';
+    const anchor = button.getBoundingClientRect();
+    const width = Math.min(420, window.innerWidth - 24);
+    modal.style.width = width + 'px';
+    const height = Math.min(modal.scrollHeight || 520, window.innerHeight * 0.76);
+    let left = Math.max(12, Math.min(anchor.left, window.innerWidth - width - 12));
+    let top = anchor.bottom + 9;
+    if (top + height > window.innerHeight - 12) top = Math.max(12, anchor.top - height - 9);
+    modal.style.left = left + 'px';
+    modal.style.top = top + 'px';
+    modal.style.visibility = 'visible';
   };
   const hideHelp = () => {
     const modal = document.getElementById('helpModal');
     if (!modal) return;
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
+    modal.style.display = 'none';
   };
   document.addEventListener('click', event => {
     const trigger = event.target.closest('#helpBtn');
