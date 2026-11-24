@@ -228,8 +228,7 @@ header{background:rgba(250,246,240,.92);border-color:var(--line)}
 main{padding-top:14px}
 header,main,nav.bottom,.modal,.toast{position:relative;z-index:2}
 .home-hero{
-  display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
-  gap:8px;align-items:center;min-height:250px;margin:4px 0 16px;
+  display:block;min-height:390px;margin:4px 0 16px;
   position:relative;isolation:isolate;
 }
 .home-hero-copy{position:relative;z-index:2;padding:4px 0}
@@ -238,9 +237,10 @@ header,main,nav.bottom,.modal,.toast{position:relative;z-index:2}
 .home-hero-note{font-size:19px;line-height:1.4;color:var(--accent);font-style:italic;
   margin:22px 0 4px;max-width:310px}
 .home-hero-note span{display:block}
-.home-hero-art{align-self:stretch;display:flex;align-items:center;justify-content:center;
-  min-width:0;position:relative;margin-right:-10px}
-.home-hero-art img{display:block;width:100%;height:265px;object-fit:contain;object-position:center bottom}
+.home-hero-art{position:absolute;z-index:1;left:25%;right:0;bottom:-8px;height:100%;
+  display:flex;align-items:flex-end;justify-content:center;min-width:0;pointer-events:none}
+.home-hero-art img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;
+  transform:scale(2.5);transform-origin:center bottom}
 .home-content{position:relative;z-index:1}
 .home-content h2{font-size:19px;line-height:1.3;margin:24px 0 10px}
 .feels{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
@@ -285,18 +285,18 @@ footer{padding-bottom:4px}
   .birds{width:95px}
 }
 @media(max-width:639px){
-  .home-hero{grid-template-columns:1fr 1fr;min-height:190px;gap:2px}
+  .home-hero{min-height:330px}
   .home-hero .sos-big{padding:12px 11px}
   .home-hero .sos-big b{font-size:16px}
   .home-hero .sos-big span{font-size:12px}
   .home-hero-note{font-size:15px;margin:14px 0}
-  .home-hero-art img{height:190px}
+  .home-hero-art{left:25%;height:75%}.home-hero-art img{transform:scale(2.5)}
   .feels,.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .birds{width:70px;top:11%;right:2%}
 }
 @media(max-width:360px){
   .home-hero{grid-template-columns:1fr}
-  .home-hero-art{display:none}
+  .home-hero-art{left:25%;height:70%}
 }
 @media(prefers-reduced-motion:reduce){
   .birds,.birds.fly{animation:none!important}
