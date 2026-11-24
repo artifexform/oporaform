@@ -941,7 +941,7 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
   let n=0,last=0;
   function spawn(){
     const now=Date.now();
-    if(now-last<120||n>=50)return;
+    if(now-last<40||n>=150)return;
     last=now;n++;
     const p=document.createElement('span');
     p.className='heart-particle';
