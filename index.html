@@ -400,6 +400,47 @@ nav.bottom .wrap{max-width:1040px}
   .feel:hover,.tile:hover{transform:none}
 }
 
+/* Полноценная тёмная тема для премиального оформления */
+[data-theme="dark"] body{
+  color:#eee8df !important;
+  background-color:#191b1a !important;
+  background-image:linear-gradient(rgba(17,20,19,.82),rgba(17,20,19,.88)),url("images/Repair (17).png") !important;
+}
+[data-theme="dark"] header,
+[data-theme="dark"] nav.bottom{
+  background:rgba(28,31,29,.97) !important;
+  border-color:rgba(235,224,207,.12) !important;
+  box-shadow:0 8px 26px rgba(0,0,0,.24);
+}
+[data-theme="dark"] .home-hero{
+  background:linear-gradient(115deg,rgba(37,41,38,.96),rgba(43,46,41,.88));
+  border-color:rgba(235,224,207,.12);
+  box-shadow:0 18px 48px rgba(0,0,0,.25);
+}
+[data-theme="dark"] .home-content{
+  background:rgba(35,39,36,.94);
+  border-color:rgba(235,224,207,.12);
+  box-shadow:0 14px 38px rgba(0,0,0,.22);
+}
+[data-theme="dark"] .feel,
+[data-theme="dark"] .tile,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .row,
+[data-theme="dark"] .icon-btn{
+  color:#eee8df !important;
+  background:rgba(49,54,49,.96) !important;
+  border-color:rgba(235,224,207,.13) !important;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+[data-theme="dark"] .tile small,
+[data-theme="dark"] .role-note{color:#c1b8aa}
+[data-theme="dark"] .roles{background:#292e29;border-color:rgba(235,224,207,.10)}
+[data-theme="dark"] .roles button{color:#c1b8aa}
+[data-theme="dark"] .roles button.on{background:#6f9b86;color:#17231d}
+[data-theme="dark"] .home-hero-note{color:#a8c9b7}
+[data-theme="dark"] .sos-big{background:linear-gradient(135deg,#984b39,#b75d45)}
+[data-theme="dark"] .search input{background:#303530;color:#eee8df;border-color:#555c53}
+
 /* Полноценный непрозрачный фон комнаты, движется при прокрутке страницы */
 html { background:transparent !important; }
 body {
@@ -559,10 +600,24 @@ const view = $('#view');
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 
 /* ---------- theme & role ---------- */
-function applyTheme(t){ document.documentElement.setAttribute('data-theme', t); }
+function applyTheme(t){
+  theme = t === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  const button = $('#themeBtn');
+  if(button){
+    button.setAttribute('aria-label', theme === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему');
+    button.setAttribute('title', theme === 'dark' ? 'Светлая тема' : 'Тёмная тема');
+    button.innerHTML = theme === 'dark'
+      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+  }
+}
 let theme = store.get('theme', (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
 applyTheme(theme);
-$('#themeBtn').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(theme); store.set('theme', theme); };
+$('#themeBtn').addEventListener('click', () => {
+  applyTheme(theme === 'dark' ? 'light' : 'dark');
+  store.set('theme', theme);
+});
 
 
 
