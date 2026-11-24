@@ -1319,10 +1319,27 @@ $('#q').addEventListener('keydown', e => { if (e.key === 'Enter'){ const a = vie
 $('#qClear').onclick = () => { $('#q').value = ''; onSearch(); $('#q').focus(); };
 
 /* help modal */
-function openHelp(){ $('#helpModal').classList.add('open'); }
-$('#helpBtn').onclick = openHelp;
-$('#helpModal').addEventListener('click', e => { if (e.target.id === 'helpModal' || e.target.closest('[data-close]')) $('#helpModal').classList.remove('open'); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') $('#helpModal').classList.remove('open'); });
+const helpBtn = document.getElementById('helpBtn');
+const helpModal = document.getElementById('helpModal');
+
+helpBtn.addEventListener('click', () => {
+  helpModal.classList.add('open');
+});
+
+helpModal.addEventListener('click', (event) => {
+  if (
+    event.target === helpModal ||
+    event.target.closest('[data-close]')
+  ) {
+    helpModal.classList.remove('open');
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    helpModal.classList.remove('open');
+  }
+});
 
 linkify(document);
 route();
