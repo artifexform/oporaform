@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Вместе легче — отношения, понимание, рост</title>
+<title>Как быть, когда сложно</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f5f2ec; --surface:#fffdf9; --surface2:#efe9df; --ink:#1f2326; --muted:#5f6468; --line:#e0d8cb;
-  --accent:#2d6a64; --accent-ink:#ffffff; --accent-soft:#dcebe7;
-  --red:#b13e2e; --red-soft:#f6e1dc; --green:#2f7445; --green-soft:#e0efe3; --amber:#9a6a12; --amber-soft:#f5ead2;
+  --bg:#f7efe7; --surface:#fffdf9; --surface2:#f0e6dc; --ink:#2a2a2a; --muted:#7a716b; --line:#e5d9ce;
+  --accent:#2d6a5a; --accent-ink:#ffffff; --accent-soft:#e1eee7;
+  --red:#c45a3c; --red-soft:#f6e1dc; --green:#2f7445; --green-soft:#e0efe3; --amber:#9a6a12; --amber-soft:#f5ead2;
   --radius:16px; --shadow:0 1px 2px rgba(30,25,15,.06),0 4px 14px rgba(30,25,15,.05);
 }
 [data-theme="dark"]{
@@ -200,237 +200,127 @@ details.more[open] summary::after{transform:rotate(180deg)}
   main{padding:0}
 }
 
-
-/* Decorative side backgrounds, bullfinches and seasonal scroll particles */
+/* Reference-inspired warm botanical layout */
+:root{
+  --bg:#f7efe7;
+  --surface:#fffdf9;
+  --surface2:#f0e6dc;
+  --ink:#2a2a2a;
+  --muted:#7a716b;
+  --line:#e7dbd0;
+  --accent:#2d6a5a;
+  --accent-ink:#fff;
+  --accent-soft:#e1eee7;
+  --red:#c45a3c;
+  --red-soft:#f6e1dc;
+  --radius:18px;
+  --shadow:0 3px 12px rgba(72,48,30,.10),0 1px 3px rgba(72,48,30,.06);
+}
+[data-theme="dark"]{
+  --bg:#242722;--surface:#30342e;--surface2:#3a3d35;--ink:#f0ece4;
+  --muted:#b9b1a6;--line:#4b4c42;--accent:#83b9a4;--accent-ink:#1c2822;
+  --accent-soft:#35483d;--red:#d77b61;--red-soft:#4b3028;--shadow:none;
+}
+body{background:var(--bg)}
+header{background:rgba(250,246,240,.92);border-color:var(--line)}
+[data-theme="dark"] header{background:rgba(36,39,34,.94)}
+.wrap{max-width:760px}
+main{padding-top:14px}
 .bg-decor-left,.bg-decor-right{
-  position:fixed;top:0;bottom:0;width:min(19vw,260px);
-  z-index:0;pointer-events:none;opacity:.30;overflow:hidden;
-  background-repeat:no-repeat;background-size:cover;background-position:center;
+  position:fixed;top:0;bottom:0;width:min(16vw,230px);z-index:0;
+  pointer-events:none;background-repeat:no-repeat;background-position:center;
+  background-size:100% 100%;opacity:.92;
 }
 .bg-decor-left{left:0;background-image:url("images/Repair (1).png")}
 .bg-decor-right{right:0;background-image:url("images/Repair (17).png")}
-header,main,nav.bottom{position:relative;z-index:2}
-
-.particle{
-  position:fixed;top:-35px;z-index:4;pointer-events:none;
-  width:22px;height:22px;line-height:1;will-change:transform;
-  opacity:.2;
-  animation:fall linear forwards;
+header,main,nav.bottom,.modal,.toast{position:relative;z-index:2}
+.home-hero{
+  display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:8px;align-items:center;min-height:250px;margin:4px 0 16px;
+  position:relative;isolation:isolate;
 }
-.particle svg{display:block;width:100%;height:100%;overflow:visible}
-@keyframes fall{
-  0%{transform:translate3d(0,-5vh,0) rotate(-18deg)}
-  100%{transform:translate3d(var(--drift, 70px),110vh,0) rotate(342deg)}
-}
-.page-illustration{
-  display:block;width:100%;margin:12px 0 18px;overflow:hidden;
-  border-radius:var(--radius);background:var(--surface2);
-}
-.page-illustration img{display:block;width:100%;height:auto;max-height:360px;object-fit:contain}
-.home-illustration img{max-height:390px}
-.pause-illustration img{max-height:280px}
-.pause-done-illustration img{max-height:240px}
-.sections-illustration img,.saved-illustration img{max-height:240px}
+.home-hero-copy{position:relative;z-index:2;padding:4px 0}
+.home-hero .sos-big{max-width:365px;padding:17px 16px;border-radius:18px}
+.home-hero .sos-big b{font-size:21px}
+.home-hero-note{font-size:19px;line-height:1.4;color:var(--accent);font-style:italic;
+  margin:22px 0 4px;max-width:310px}
+.home-hero-note span{display:block}
+.home-hero-art{align-self:stretch;display:flex;align-items:center;justify-content:center;
+  min-width:0;position:relative;margin-right:-10px}
+.home-hero-art img{display:block;width:100%;height:265px;object-fit:contain;object-position:center bottom}
+.home-content{position:relative;z-index:1}
+.home-content h2{font-size:19px;line-height:1.3;margin:24px 0 10px}
+.feels{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.feel{min-height:58px;padding:10px 12px;border-radius:15px;font-size:15px;font-weight:600;
+  box-shadow:var(--shadow);background:var(--surface)}
+.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.tile{min-height:88px;padding:12px;border-radius:15px;background:var(--surface);box-shadow:var(--shadow)}
+.tile b{font-size:15px}
+.tile small{font-size:12px}
+.roles{background:#eee4d9;border-radius:14px;padding:4px}
+.roles button{color:#665e58}
+.roles button.on{background:var(--accent);color:white}
+.role-note{font-size:13px}
+.chip{background:var(--surface);font-size:14px;padding:7px 11px}
+.row{border-radius:14px;background:rgba(255,253,249,.94);box-shadow:0 1px 4px rgba(72,48,30,.04)}
+.sos-big{background:var(--red);box-shadow:0 5px 12px rgba(142,61,42,.16)}
+footer{padding-bottom:4px}
+.page-illustration{border-radius:18px;overflow:hidden;margin:8px 0 18px}
+.page-illustration img{width:100%;height:auto;display:block;object-fit:contain}
+.pause-hero-image img{max-height:240px;object-fit:contain}
+.done-hero-image img{max-height:200px;object-fit:contain}
+.birds{position:fixed;top:10%;right:2%;width:140px;z-index:5;pointer-events:none;
+  transform-origin:center;animation:bird-sway 5s ease-in-out infinite;will-change:transform}
+.birds img{display:block;width:100%;height:auto;object-fit:contain}
+.birds.fly{animation:bird-fly 2.5s ease-in-out forwards}
+@keyframes bird-sway{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1deg)}}
+@keyframes bird-fly{0%{transform:translate3d(0,0,0) rotate(0);opacity:1}100%{transform:translate3d(-75vw,-25vh,0) rotate(9deg);opacity:0}}
+.particle{position:fixed;top:-24px;z-index:4;pointer-events:none;will-change:transform,opacity;
+  font-size:18px;line-height:1;animation:particle-fall linear forwards}
+@keyframes particle-fall{to{transform:translate3d(30px,110vh,0) rotate(300deg);opacity:0}}
 @media(max-width:900px){
-  .bg-decor-left,.bg-decor-right{opacity:.18;width:12vw}
+  .bg-decor-left,.bg-decor-right{width:12vw;opacity:.5}
+  .birds{width:95px}
 }
-@media(max-width:480px){
+@media(max-width:639px){
   .bg-decor-left,.bg-decor-right{display:none}
-  .particle{font-size:16px}
+  .home-hero{grid-template-columns:1fr 1fr;min-height:190px;gap:2px}
+  .home-hero .sos-big{padding:12px 11px}
+  .home-hero .sos-big b{font-size:16px}
+  .home-hero .sos-big span{font-size:12px}
+  .home-hero-note{font-size:15px;margin:14px 0}
+  .home-hero-art img{height:190px}
+  .feels,.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .birds{width:70px;top:11%;right:2%}
 }
-@media(prefers-reduced-motion:reduce){.particle{animation:none!important}}
+@media(max-width:360px){
+  .home-hero{grid-template-columns:1fr}
+  .home-hero-art{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .birds,.birds.fly,.particle{animation:none!important}
+}
 
-
-/* ===== Homepage redesign: warm editorial landing page ===== */
-:root{
-  --bg:#f5f0e8;--surface:#fff;--surface2:#faf6f0;--ink:#2a2a2a;--muted:#7a7a7a;
-  --line:#e8dfd4;--accent:#2d6a5a;--accent-ink:#fff;--accent-soft:#e5eee8;
-  --red:#c45a3c;--red-soft:#f5e4dd;--radius:18px;--shadow:0 5px 18px rgba(67,49,34,.10);
-}
-[data-theme="dark"]{
-  --bg:#171a18;--surface:#222724;--surface2:#2a302c;--ink:#f0eee8;--muted:#b3b8b2;
-  --line:#3b443e;--accent:#70aa92;--accent-ink:#13231b;--accent-soft:#263d31;
-  --red:#dc8064;--red-soft:#412a23;--shadow:none;
-}
-body{background:var(--bg);color:var(--ink)}
-.wrap{max-width:1240px}
-.site-header{position:sticky;top:0;background:rgba(250,246,240,.94);border-bottom:1px solid rgba(120,98,75,.12);backdrop-filter:blur(14px)}
-[data-theme="dark"] .site-header{background:rgba(23,26,24,.94)}
-.header-shell{padding-top:8px}
-.hrow{min-height:66px;gap:24px;padding:8px 0}
-.brand{display:flex;align-items:center;gap:10px;flex:0 0 245px;white-space:normal;overflow:visible}
-.brand-heart{font-size:38px;line-height:1;color:var(--red)}
-.brand-copy{display:flex;flex-direction:column;line-height:1.2}
-.brand-copy strong{font-size:19px;letter-spacing:-.02em}
-.brand-copy small{font-size:12px;color:var(--muted);font-weight:400;margin-top:3px}
-.desktop-nav{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,30px);flex:1}
-.desktop-nav a{font-size:14px;font-weight:600;text-decoration:none;color:var(--muted);white-space:nowrap;cursor:pointer}
-.desktop-nav a.active,.desktop-nav a:hover{color:var(--accent)}
-.header-actions{display:flex;align-items:center;gap:9px}
-.header-actions .icon-btn{height:42px;border-radius:12px}
-.help-action{font-size:14px!important}
-.account-btn{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important;font-weight:700}
-.search{max-width:100%;padding:0 0 10px}
-.search input{height:44px;background:var(--surface);font-size:15px}
-.search-toggle{background:transparent}
-main{padding:0 0 100px;position:relative;z-index:1}
-.hero-section{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;gap:24px;min-height:510px;padding:40px 0 28px;position:relative}
-.hero-copy{position:relative;z-index:2;padding:18px 0 24px 4px}
-.eyebrow{font-size:12px;letter-spacing:.13em;font-weight:700;color:var(--accent);margin-bottom:18px}
-.hero-copy h1{font-size:clamp(36px,4.3vw,62px);line-height:1.02;letter-spacing:-.045em;margin:0 0 16px}
-.hero-copy h1 span,.hero-copy h1 strong{display:block}
-.hero-copy h1 span{color:var(--red)}
-.hero-copy h1 strong{color:var(--ink);font-weight:700}
-.hero-subtitle{font-size:25px;margin:0 0 12px;color:var(--ink)}
-.hero-description{font-size:17px;line-height:1.65;color:var(--muted);max-width:510px;margin:0 0 24px}
-.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
-.hero-buttons .btn{flex:0 0 auto;min-width:160px;border-radius:12px;padding:13px 20px}
-.hero-primary{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
-.hero-secondary{background:transparent!important;border:1px solid var(--accent)!important;color:var(--accent)!important}
-.hero-art{position:relative;min-height:430px;display:flex;align-items:flex-end;justify-content:center}
-.hero-picture-frame{width:100%;max-width:650px;position:relative;z-index:1}
-.hero-picture-frame img{width:100%;height:auto;max-height:465px;object-fit:contain;display:block;filter:drop-shadow(0 14px 18px rgba(69,45,28,.10))}
-.wall-note{position:absolute;z-index:2;background:#f4e4d0;border:7px solid #d2ad85;box-shadow:0 8px 18px rgba(83,55,32,.14);color:#775c43;font-family:Georgia,serif;font-style:italic;text-align:center;display:flex;align-items:center;justify-content:center;flex-direction:column;line-height:1.35}
-.wall-note span{font-size:26px;color:var(--red)}
-.wall-note-small{left:8%;top:10px;width:132px;height:94px;transform:rotate(-2deg);font-size:13px}
-.wall-note-large{right:0;top:0;width:142px;height:116px;transform:rotate(2deg);font-size:18px}
-.benefits-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:8px 0 28px}
-.benefit-card{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 16px;box-shadow:var(--shadow);min-height:116px}
-.benefit-icon{flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:25px}
-.heart-icon{color:var(--red);background:var(--red-soft)}
-.benefit-card b{display:block;font-size:15px;line-height:1.3;margin:1px 0 6px}
-.benefit-card p{font-size:13px;line-height:1.45;color:var(--muted);margin:0}
-.quote-banner{display:flex;align-items:center;gap:18px;background:var(--accent);color:#fff;border-radius:18px;padding:21px 26px;margin:0 0 34px;box-shadow:0 8px 22px rgba(45,106,90,.16)}
-.quote-sprout{font-size:34px;line-height:1}
-.quote-banner p{font-size:18px;font-weight:600;line-height:1.4;margin:0;flex:1}
-.quote-link{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.65);border-radius:11px;padding:10px 15px;white-space:nowrap;font-weight:600;font-size:14px}
-.home-content{max-width:1120px;margin:0 auto}
-.home-content h2{font-size:22px;margin:28px 0 13px;letter-spacing:-.02em}
-.home-content .feels{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.home-content .feel{min-height:70px;padding:14px 16px;background:var(--surface);border-radius:15px;font-size:16px;box-shadow:var(--shadow)}
-.home-content .roles{max-width:600px;background:rgba(230,219,204,.55);padding:4px}
-.home-content .role-note{margin-top:7px}
-.home-content .tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.home-content .situation-card{min-height:104px;padding:16px;border-radius:15px}
-.home-content .chips{gap:9px}
-.home-content .chip{background:var(--surface);font-size:14px;padding:9px 14px}
-.home-content .list{gap:8px}
-.home-content .row{background:var(--surface);border-radius:13px;box-shadow:0 2px 8px rgba(67,49,34,.05)}
-.home-content footer{padding:14px 0 4px}
-.bg-decor-left,.bg-decor-right{opacity:.14;z-index:0;pointer-events:none}
-.birds{z-index:4}
-@media(min-width:1500px){.wrap{max-width:1320px}.hero-section{min-height:560px}}
-@media(max-width:900px){
-  .wrap{max-width:760px}
-  .desktop-nav{display:none}
-  .brand{flex:1}
-  .header-actions{gap:6px}
-  .help-action{font-size:0!important;min-width:42px;padding:0!important}
-  .help-action svg{width:19px;height:19px}
-  .account-btn{display:none!important}
-  .hero-section{grid-template-columns:1fr 1fr;gap:8px;min-height:380px;padding:25px 0 12px}
-  .hero-art{min-height:310px}
-  .hero-copy h1{font-size:clamp(30px,5vw,44px)}
-  .hero-subtitle{font-size:20px}
-  .hero-description{font-size:15px}
-  .wall-note-small{width:100px;height:72px;font-size:10px}
-  .wall-note-large{width:108px;height:88px;font-size:14px}
-  .benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .home-content .feels,.home-content .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:560px){
-  .header-shell{padding-top:3px}
-  .hrow{min-height:58px;gap:8px}
-  .brand-heart{font-size:30px}
-  .brand-copy strong{font-size:16px}
-  .brand-copy small{font-size:10px}
-  .header-actions .icon-btn{height:38px;min-width:38px}
-  .search-toggle{display:none!important}
-  .search{padding-bottom:8px}
-  .hero-section{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:24px 0 10px}
-  .hero-copy{padding:0 2px}
-  .eyebrow{font-size:10px;margin-bottom:12px}
-  .hero-copy h1{font-size:clamp(35px,10vw,48px)}
-  .hero-subtitle{font-size:21px}
-  .hero-description{font-size:15px;max-width:none}
-  .hero-art{min-height:235px;margin-top:0}
-  .hero-picture-frame{max-width:440px}
-  .wall-note-small{left:2%;top:2px;width:86px;height:62px;border-width:4px;font-size:9px}
-  .wall-note-large{right:0;top:0;width:94px;height:74px;border-width:4px;font-size:12px}
-  .benefits-grid{grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 20px}
-  .benefit-card{padding:12px 10px;gap:8px;min-height:104px}
-  .benefit-icon{width:30px;height:30px;flex-basis:30px;font-size:20px}
-  .benefit-card b{font-size:13px}
-  .benefit-card p{font-size:11px}
-  .quote-banner{gap:10px;padding:16px 13px;margin-bottom:24px}
-  .quote-banner p{font-size:14px}
-  .quote-link{font-size:12px;padding:8px 9px}
-  .quote-sprout{font-size:26px}
-  .home-content h2{font-size:19px;margin-top:23px}
-  .home-content .feels,.home-content .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .home-content .feel{font-size:14px;min-height:58px;padding:10px}
-  .home-content .situation-card{min-height:95px;padding:12px}
-  .bg-decor-left,.bg-decor-right{display:none}
-}
-@media(prefers-reduced-motion:reduce){.hero-picture-frame img{filter:none}}
-
-
-@media(min-width:901px){
-  .site-header .search{display:none}
-  .site-header .search.search-open{display:block;max-width:720px;margin:0 auto}
-}
-.birds{position:fixed;top:9%;right:2%;width:150px;z-index:5;pointer-events:none;animation:perch 5s ease-in-out infinite}
-.birds svg{width:100%;height:auto;display:block}
-.birds .wing{transform-origin:50% 40%;animation:flap 4s ease-in-out infinite}
-@keyframes perch{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
-@keyframes flap{0%,88%,100%{transform:rotate(0)}92%{transform:rotate(-22deg)}96%{transform:rotate(-10deg)}}
-.birds.fly{animation:fly 2.6s ease-in-out}
-@keyframes fly{0%{transform:translate(0,0)}25%{transform:translate(-35vw,-70px)}60%{transform:translate(-55vw,-25px)}100%{transform:translate(0,0)}}
-.particle{position:fixed;top:-36px;z-index:4;pointer-events:none;line-height:1;animation:fall linear forwards}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
-@media(max-width:900px){.birds{width:95px;top:6%}}
 </style>
 </head>
 <body>
-<div class="birds" aria-hidden="true">
-<svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
-<path d="M6 84 Q80 76 154 82" stroke="#6b4a35" stroke-width="4" fill="none" stroke-linecap="round"/>
-<g class="bird"><ellipse cx="52" cy="62" rx="22" ry="17" fill="#4a4a4f"/><ellipse cx="50" cy="66" rx="14" ry="11" fill="#c0463a"/><g class="head"><circle cx="62" cy="50" r="11" fill="#2a2a2d"/><path d="M70 48 l8 2 -8 3z" fill="#3a3a3d"/><circle class="eye" cx="65" cy="48" r="2" fill="#fff"/></g><g class="wing"><path d="M34 58 q-6 8 2 14 q10 -2 12 -10z" fill="#3a3a3f"/></g></g>
-<g class="bird"><ellipse cx="108" cy="64" rx="19" ry="15" fill="#8a8f94"/><ellipse cx="106" cy="68" rx="12" ry="9" fill="#a89a8f"/><g class="head"><circle cx="118" cy="53" r="10" fill="#6a6f74"/><path d="M125 51 l7 2 -7 3z" fill="#4a4a4d"/><circle class="eye" cx="121" cy="51" r="1.8" fill="#fff"/></g><g class="wing"><path d="M92 60 q-5 7 1 12 q9 -2 10 -9z" fill="#7a7f84"/></g></g>
-</svg>
-</div>
-<!-- Fixed decorative backgrounds (CSS only) -->
+
+<!-- Fixed botanical room decoration -->
 <div class="bg-decor-left" aria-hidden="true"></div>
 <div class="bg-decor-right" aria-hidden="true"></div>
 
-<header class="site-header">
-  <div class="wrap header-shell">
+<header>
+  <div class="wrap">
     <div class="hrow">
-      <a class="brand" data-go="#home" aria-label="Вместе легче — на главную">
-        <span class="brand-heart" aria-hidden="true">♥</span>
-        <span class="brand-copy"><strong>Вместе легче</strong><small>отношения · понимание · рост</small></span>
-      </a>
-      <nav class="desktop-nav" aria-label="Основная навигация">
-        <a class="active" data-go="#home">Главная</a>
-        <a data-go="#sections">Курсы</a>
-        <a data-go="#sections">Полезные материалы</a>
-        <a data-go="#card-s0">О нас</a>
-      </nav>
-      <div class="header-actions">
-        <button class="icon-btn search-toggle" id="searchToggle" type="button" aria-label="Открыть поиск">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-        </button>
-        <button class="icon-btn sos help-action" id="helpBtn" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-          Нужна помощь?
-        </button>
-        <button class="icon-btn account-btn" id="rolePill" type="button" aria-label="Переключить профиль">Личный кабинет</button>
-        <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Сменить тему">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        </button>
-      </div>
+      <a class="brand" data-go="#home">Как быть, когда сложно</a>
+      <button class="icon-btn sos" id="helpBtn" type="button" aria-label="Экстренная помощь">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        Помощь
+      </button>
+      <button class="icon-btn role-pill" id="rolePill" type="button" aria-label="Кто читает"></button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Сменить тему"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     </div>
-    <div class="search" id="searchPanel">
+    <div class="search">
       <input id="q" type="search" placeholder="Что случилось? молчит, плачет, пауза…" autocomplete="off" enterkeyhint="search">
       <button class="clear" id="qClear" type="button" aria-label="Очистить">×</button>
     </div>
@@ -560,7 +450,7 @@ const ROLE_NAME = {v: 'Виктор', vi: 'Виктория', both: 'Оба'};
 function applyRole(){
   document.body.classList.toggle('role-v', role === 'v');
   document.body.classList.toggle('role-vi', role === 'vi');
-  const p = $('#rolePill'); p.textContent = 'Личный кабинет'; p.title = 'Текущий профиль: ' + ROLE_NAME[role]; p.classList.toggle('on', role !== 'both');
+  const p = $('#rolePill'); p.textContent = ROLE_NAME[role]; p.classList.toggle('on', role !== 'both');
 }
 function setRole(r){ role = r; store.set('role', r); applyRole(); toast(r === 'both' ? 'Подсказки для обоих' : 'Подсказки для: ' + ROLE_NAME[r]); }
 applyRole();
@@ -716,50 +606,25 @@ const TILES_ROLE = {
   ],
 };
 function renderHome(){
-  const tiles = (TILES_ROLE[role] || TILES).map(([id, t, s]) =>
-    `<a class="tile situation-card" data-go="${id === 'pause' ? '#pause' : '#card-' + id}"><b>${t}</b><small>${s}</small></a>`
-  ).join('');
-  const syms = DATA.symptoms.slice(0, 10).map((s, i) =>
-    `<a class="chip" data-sym="${i}">${esc(s.phrase)}</a>`
-  ).join('');
+  const tiles = (TILES_ROLE[role] || TILES).map(([id, t, s]) => `<a class="tile" data-go="${id === 'pause' ? '#pause' : '#card-' + id}"><b>${t}</b><small>${s}</small></a>`).join('');
+  const syms = DATA.symptoms.slice(0, 10).map((s, i) => `<a class="chip" data-sym="${i}">${esc(s.phrase)}</a>`).join('');
   const rec = recent.filter(id => CARDS[id]).slice(0, 4);
-
   view.innerHTML = `
-    <section class="hero-section" aria-label="Вместе легче">
-      <div class="hero-copy">
-        <div class="eyebrow">КОНФЛИКТ — НЕ КОНЕЦ, А НАЧАЛО ДИАЛОГА</div>
-        <h1><span>ИЗ КОНФЛИКТА</span><strong>В ОТНОШЕНИЯХ</strong></h1>
-        <h2 class="hero-subtitle">Учимся слышать друг друга</h2>
-        <p class="hero-description">Практические инструменты, которые помогут спокойно обсуждать сложные темы, понимать чувства и находить решения вместе.</p>
-        <div class="hero-buttons">
-          <button class="btn hero-primary" type="button" id="startJourney">Начать путь <span aria-hidden="true">→</span></button>
-          <button class="btn hero-secondary" type="button" id="howItWorks">Как это работает</button>
-        </div>
+    <section class="home-hero" aria-label="Сейчас конфликт">
+      <div class="home-hero-copy">
+        <button class="sos-big" type="button" data-go="#conflict">
+          <b>СЕЙЧАС КОНФЛИКТ</b>
+          <span>Пошагово: стоп-кран → остывание → разбор → закрытие</span>
+        </button>
+        <p class="home-hero-note"><span>Разные люди.</span><span>Один важный разговор. ♡</span></p>
       </div>
-      <div class="hero-art">
-        <div class="hero-picture-frame"><img src="images/Repair (2).png" alt="Пара спокойно разговаривает на диване" loading="lazy"></div>
-        <div class="wall-note wall-note-small">РАЗГОВОР<br>СБЛИЖАЕТ <span>♡</span></div>
-        <div class="wall-note wall-note-large">Больше<br>понимания <span>♡</span></div>
+      <div class="home-hero-art">
+        <img src="images/Repair (2).png" width="1264" height="1264" alt="Пара спокойно разговаривает на диване" fetchpriority="high">
       </div>
     </section>
-
-    <section class="benefits-grid" aria-label="Преимущества">
-      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">☁</span><div><b>Спокойный диалог</b><p>Говорим без обвинений и крика</p></div></article>
-      <article class="benefit-card"><span class="benefit-icon heart-icon" aria-hidden="true">♡</span><div><b>Слышим чувства</b><p>Учимся понимать настоящие потребности</p></div></article>
-      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">⌁</span><div><b>Ищем решения</b><p>Находим выход вместе, а не по отдельности</p></div></article>
-      <article class="benefit-card"><span class="benefit-icon sprout-icon" aria-hidden="true">♧</span><div><b>Укрепляем отношения</b><p>Больше доверия, тепла и поддержки</p></div></article>
-    </section>
-
-    <section class="quote-banner" id="howBanner">
-      <span class="quote-sprout" aria-hidden="true">♧</span>
-      <p>Конфликт — это не конец, а начало более честного разговора</p>
-      <a class="quote-link" data-go="#card-s0">Узнать больше <span aria-hidden="true">→</span></a>
-    </section>
-
-    <section class="home-content" id="feelingsSection">
-      <h2>Что ты сейчас чувствуешь?</h2>
+    <section class="home-content">
+      <h2 style="margin-top:10px">Что ты сейчас чувствуешь?</h2>
       <div class="feels">${FEELS.map(f => `<a class="feel" data-go="#feel-${f.id}">${esc(f.t)}</a>`).join('')}</div>
-
       <h2>Кто читает?</h2>
       <div class="roles" role="group" aria-label="Кто читает">
         <button type="button" data-role="v" class="${role==='v'?'on':''}" aria-pressed="${role==='v'}">Я Виктор</button>
@@ -767,53 +632,32 @@ function renderHome(){
         <button type="button" data-role="both" class="${role==='both'?'on':''}" aria-pressed="${role==='both'}">Оба</button>
       </div>
       <p class="role-note">${role==='both' ? 'Выбери себя: плитки ниже станут твоими, а в карточках сверху появится «Твоя часть».' : 'Плитки ниже — для тебя. В карточках сверху появится «Твоя часть», чужие пункты станут бледнее.'}</p>
-
       <h2>${role==='both' ? 'Что происходит?' : 'Что происходит у тебя?'}</h2>
       <div class="tiles">${tiles}</div>
-
       <h2>Если звучит…</h2>
       <div class="chips">${syms}</div>
-
       ${rec.length ? `<h2>Недавно открывали</h2><div class="list">${rec.map(id => rowFor(id)).join('')}</div>` : ''}
-
       <h2>Главное</h2>
       <div class="list">${rowFor('s0', 'Пять мыслей, на которых держится весь документ')}${rowFor('s10', 'Готовые фразы с кнопкой «копировать»')}${rowFor('s7', 'Коды и правила связи в аврал')}</div>
       <footer>Обновлено ${UPDATED}. <a data-go="#card-s18">Шаблон изменений</a></footer>
     </section>`;
-
   view.querySelectorAll('[data-role]').forEach(b => b.onclick = () => { setRole(b.dataset.role); renderHome(); });
-  view.querySelectorAll('[data-sym]').forEach(a => a.onclick = e => { e.preventDefault(); const symptom = DATA.symptoms[+a.dataset.sym]; $('#q').value = symptom.phrase.replace(/[«»]/g, ''); onSearch(); });
-  const startButton = $('#startJourney');
-  if (startButton) startButton.onclick = () => $('#feelingsSection').scrollIntoView({behavior:'smooth', block:'start'});
-  const howButton = $('#howItWorks');
-  if (howButton) howButton.onclick = () => $('#howBanner').scrollIntoView({behavior:'smooth', block:'center'});
+  view.querySelectorAll('[data-sym]').forEach(a => a.onclick = e => { e.preventDefault(); const s = DATA.symptoms[+a.dataset.sym]; $('#q').value = s.phrase.replace(/[«»]/g, ''); onSearch(); });
 }
 function renderSections(){
-  view.innerHTML = `<h1>Разделы</h1><div class="list">${DATA.sections.map(s => {
+  view.innerHTML = `<div class="page-illustration"><img src="images/Repair (9).png" width="1749" height="588" alt="Иллюстрация разделов" loading="lazy"></div><h1>Разделы</h1><div class="list">${DATA.sections.map(s => {
     const one = s.children.length === 1 && CARDS[s.children[0]] && CARDS[s.children[0]].code === s.code;
     return one ? rowFor(s.children[0], preview(s.children[0])) : rowFor(s.id, s.children.length + ' ' + plural(s.children.length, ['карточка','карточки','карточек']));
   }).join('')}</div>`;
-  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration sections-illustration"><img src="images/Repair (9).png" alt="Иллюстрация разделов" loading="lazy"></div>`);
 }
 function preview(id){ const c = CARDS[id]; if (!c) return ''; const s = c.text.slice(0, 80); return esc(s.length < c.text.length ? s.replace(/\s+\S*$/, '') + '…' : s); }
 function plural(n, f){ const m = n % 10, h = n % 100; return f[(m===1 && h!==11) ? 0 : (m>=2 && m<=4 && (h<12 || h>14)) ? 1 : 2]; }
 function renderSection(id){
   const s = SECS[id]; if (!s) return renderHome();
-  view.innerHTML = `<div class="crumbs"><a data-go="#sections">Разделы</a></div><h1>${esc(s.code)}. ${esc(s.title)}</h1><div class="list">${s.children.map(c => rowFor(c)).join('')}</div>`;
-  // sec-1 «Почему мы ссоримся по кругу» — Repair (14).png (пара на диване с чашками)
-// sec-2 — Repair (7).png
-// sec-3 — Repair (11).png
-// sec-4 — Repair (16).png
-// sec-5 — Repair (10).png
-// sec-6 — Repair (12).png
-// sec-7 — Repair (13).png
-// sec-8 «Ритуалы» — Repair (3).png
-// sec-9 — Repair (15).png
-// sec-10 — Repair (18).png
-const sectionImages = ['Repair (14).png','Repair (7).png','Repair (11).png','Repair (16).png','Repair (10).png','Repair (12).png','Repair (13).png','Repair (3).png','Repair (15).png','Repair (18).png'];
+  const sectionImages = ['Repair (3).png','Repair (7).png','Repair (11).png','Repair (16).png','Repair (10).png','Repair (12).png','Repair (13).png','Repair (14).png','Repair (15).png','Repair (18).png'];
   const sectionIndex = DATA.sections.findIndex(section => section.id === id);
   const sectionImage = sectionImages[(sectionIndex >= 0 ? sectionIndex : 0) % sectionImages.length];
-  view.querySelector('h1').insertAdjacentHTML('afterend', `<div class="page-illustration section-card-illustration"><img src="images/${sectionImage}" alt="" loading="lazy"></div>`);
+  view.innerHTML = `<div class="crumbs"><a data-go="#sections">Разделы</a></div><h1>${esc(s.code)}. ${esc(s.title)}</h1><div class="page-illustration"><img src="images/${sectionImage}" width="1200" height="600" alt="Иллюстрация раздела" loading="lazy"></div><div class="list">${s.children.map(c => rowFor(c)).join('')}</div>`;
 }
 const CHECK = new Set(['s13-5', 's13-1']);
 function renderCard(id){
@@ -849,9 +693,8 @@ function setupChecklist(id){
 }
 function renderSaved(){
   const f = favs.filter(id => CARDS[id]);
-  view.innerHTML = `<h1>Избранное</h1>${f.length ? `<div class="list">${f.map(id => rowFor(id)).join('')}</div>` : `<div class="empty">Пока пусто. Нажмите ☆ в карточке, чтобы она появилась здесь.</div>`}
+  view.innerHTML = `<div class="page-illustration"><img src="images/Repair (6).png" width="1674" height="940" alt="Иллюстрация избранного" loading="lazy"></div><h1>Избранное</h1>${f.length ? `<div class="list">${f.map(id => rowFor(id)).join('')}</div>` : `<div class="empty">Пока пусто. Нажмите ☆ в карточке, чтобы она появилась здесь.</div>`}
     ${recent.length ? `<h2>Недавно открывали</h2><div class="list">${recent.filter(id => CARDS[id]).map(id => rowFor(id)).join('')}</div>` : ''}`;
-  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration saved-illustration"><img src="images/Repair (6).png" alt="Иллюстрация избранного" loading="lazy"></div>`);
 }
 
 function linkRefs(s){
@@ -948,7 +791,7 @@ function renderPause(){
   clearInterval(tick);
   const end = store.get('pauseEnd', 0);
   const active = end && end > Date.now() - 6*3600e3;
-  view.innerHTML = `<h1>Безопасная пауза</h1>
+  view.innerHTML = `<div class="page-illustration pause-hero-image"><img src="images/Repair (4).png" width="2048" height="682" alt="Спокойная пауза" loading="lazy"></div><h1>Безопасная пауза</h1>
     <p class="muted" style="margin-top:-4px">Выберите, сколько нужно. Сайт посчитает время возврата и подготовит сообщение.</p>
     <div class="durs">${DURS.map(([v, l]) => `<button type="button" data-d="${v}">${l}</button>`).join('')}</div>
     <div id="tbox"></div>
@@ -963,7 +806,6 @@ function renderPause(){
     <p class="muted small" style="margin-top:-4px">Нажмите, чтобы скопировать и отправить в мессенджер.</p>
     <div class="codes">${CODES.map(([e, t]) => `<button class="code-btn" type="button" data-code="${e} ${esc(t)}"><span class="e">${e}</span><span>${esc(t)}</span></button>`).join('')}</div>
     <p class="small" style="margin-top:14px"><a data-go="#card-s7">Правила связи в режиме «штормов»</a> · <a data-go="#card-p3">Правило П3</a></p>`;
-  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration pause-illustration"><img src="images/Repair (4).png" alt="Спокойная комната для паузы" loading="lazy"></div>`);
   view.querySelectorAll('[data-d]').forEach(b => b.onclick = () => {
     let endT;
     if (b.dataset.d === 'morning'){ const d = new Date(); d.setDate(d.getDate() + (d.getHours() >= 6 ? 1 : 0)); d.setHours(9, 0, 0, 0); endT = d.getTime(); }
@@ -976,7 +818,7 @@ function renderPause(){
   const draw = () => {
     const left = end - Date.now();
     if (left <= 0){
-      box.innerHTML = `<div class="done"><div class="page-illustration pause-done-illustration"><img src="images/Repair (5).png" alt="Пара обнимается после паузы" loading="lazy"></div><b>Время вернуться.</b> Начни первым:<div class="say">«Я вернулся. Готов поговорить».<button class="cp" type="button" data-t="Я вернулся. Готов поговорить.">копировать</button></div><button class="btn" type="button" id="tReset">Закрыть таймер</button></div>`;
+      box.innerHTML = `<div class="page-illustration done-hero-image"><img src="images/Repair (5).png" width="944" height="1680" alt="Пара обнимается после паузы" loading="lazy"></div><div class="done"><b>Время вернуться.</b> Начни первым:<div class="say">«Я вернулся. Готов поговорить».<button class="cp" type="button" data-t="Я вернулся. Готов поговорить.">копировать</button></div><button class="btn" type="button" id="tReset">Закрыть таймер</button></div>`;
       $('#tReset').onclick = () => { store.set('pauseEnd', 0); renderPause(); };
       clearInterval(tick); return;
     }
@@ -1058,16 +900,6 @@ $('#q').addEventListener('input', onSearch);
 $('#q').addEventListener('keydown', e => { if (e.key === 'Enter'){ const a = view.querySelector('a.row, a.chip'); if (a){ e.preventDefault(); a.click(); $('#q').blur(); } } });
 $('#qClear').onclick = () => { $('#q').value = ''; onSearch(); $('#q').focus(); };
 
-/* Desktop search toggle */
-const searchToggle = $('#searchToggle');
-if (searchToggle) {
-  searchToggle.onclick = () => {
-    const panel = $('#searchPanel');
-    panel.classList.toggle('search-open');
-    if (panel.classList.contains('search-open')) $('#q').focus();
-  };
-}
-
 /* help modal */
 function openHelp(){ $('#helpModal').classList.add('open'); }
 $('#helpBtn').onclick = openHelp;
@@ -1080,82 +912,106 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
 </script>
 
 <script>
-/* Pink, white and grey falling hearts: appear while scrolling and overlap naturally. */
+/* Seasonal particles: only active during scrolling; RAF is canceled after 1.5s idle. */
 (() => {
-  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return;
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
 
-  const heartColors = ['#f3a6bd', '#ffffff', '#aeb2b8'];
-  const heartSVG = color =>
-    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-9-5.8-9-12.1C3 4.1 7.8 2.2 12 7c4.2-4.8 9-2.9 9 1.9C21 15.2 12 21 12 21Z" fill="' + color + '"/></svg>';
+  const month = new Date().getMonth();
+  const season = month >= 2 && month <= 4 ? 'spring'
+    : month >= 5 && month <= 7 ? 'summer'
+    : month >= 8 && month <= 10 ? 'autumn' : 'winter';
+  const symbols = {
+    winter: ['❄️','❅','❆'],
+    spring: ['🌸','✿'],
+    summer: ['🍃','✽'],
+    autumn: ['🍁','🍂']
+  };
+  const MAX_PARTICLES = 45;
+  const particles = new Set();
+  let rafId = 0, stopTimer = 0, lastTime = 0, lastSpawn = 0;
 
-  const MAX_PARTICLES = 36;
-  const active = new Set();
-  let scrollStopTimer = null;
-  let spawning = false;
-  let spawnTimer = null;
-
-  function spawnParticle() {
-    if (active.size >= MAX_PARTICLES) return;
-    const p = document.createElement('span');
-    p.className = 'particle';
-    p.innerHTML = heartSVG(heartColors[Math.floor(Math.random() * heartColors.length)]);
-    p.setAttribute('aria-hidden', 'true');
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.setProperty('--drift', (Math.random() * 220 - 110) + 'px');
-    p.style.animationDuration = (5 + Math.random() * 5) + 's';
-    p.style.width = (16 + Math.random() * 12) + 'px';
-    p.style.height = p.style.width;
-    document.body.appendChild(p);
-    active.add(p);
-    const remove = () => { if (active.delete(p)) p.remove(); };
-    p.addEventListener('animationend', remove, { once: true });
-    window.setTimeout(remove, 11000);
+  function createParticle(now) {
+    if (particles.size >= MAX_PARTICLES) return;
+    const el = document.createElement('span');
+    el.className = 'particle';
+    el.textContent = symbols[season][Math.floor(Math.random() * symbols[season].length)];
+    el.style.left = (Math.random() * 100) + 'vw';
+    el.style.opacity = String(.45 + Math.random() * .4);
+    el.dataset.speed = String(.45 + Math.random() * .8);
+    el.dataset.x = String(Math.random() * 18 - 9);
+    el.dataset.y = '-24';
+    el.dataset.rot = String(Math.random() * 180);
+    el.dataset.size = String(13 + Math.random() * 10);
+    el.style.fontSize = el.dataset.size + 'px';
+    document.body.appendChild(el);
+    particles.add(el);
   }
 
-  function startSpawning() {
-    if (spawning) return;
-    spawning = true;
-    spawnParticle();
-    spawnTimer = window.setInterval(spawnParticle, 180);
+  function animate(now) {
+    if (!lastTime) lastTime = now;
+    const dt = Math.min(40, now - lastTime);
+    lastTime = now;
+
+    if (now - lastSpawn > 130 && particles.size < MAX_PARTICLES) {
+      createParticle(now);
+      lastSpawn = now;
+    }
+
+    particles.forEach(el => {
+      const y = Number(el.dataset.y) + Number(el.dataset.speed) * dt * .075;
+      const x = Number(el.dataset.x) + Math.sin(now / 900 + Number(el.dataset.rot)) * .12;
+      el.dataset.y = String(y);
+      el.dataset.x = String(x);
+      el.style.transform = `translate3d(${x}px, ${y}vh, 0) rotate(${Number(el.dataset.rot) + y * 2}deg)`;
+      if (y > 110) {
+        particles.delete(el);
+        el.remove();
+      }
+    });
+
+    rafId = requestAnimationFrame(animate);
   }
 
-  function stopSpawning() {
-    spawning = false;
-    if (spawnTimer !== null) window.clearInterval(spawnTimer);
-    spawnTimer = null;
+  function start() {
+    if (!rafId) {
+      lastTime = 0;
+      lastSpawn = 0;
+      rafId = requestAnimationFrame(animate);
+    }
+    clearTimeout(stopTimer);
+    stopTimer = setTimeout(stop, 1500);
   }
 
-  window.addEventListener('scroll', () => {
-    startSpawning();
-    if (scrollStopTimer !== null) window.clearTimeout(scrollStopTimer);
-    scrollStopTimer = window.setTimeout(stopSpawning, 1500);
-  }, { passive: true });
+  function stop() {
+    clearTimeout(stopTimer);
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = 0;
+    lastTime = 0;
+  }
+
+  window.addEventListener('scroll', start, { passive: true });
 })();
-(function(){
-const m=new Date().getMonth();
-const set=(m>=2&&m<=4)?['🌸','🌼']:(m>=5&&m<=7)?['🍃','🌼']:(m>=8&&m<=10)?['🍁','🍂']:['❄️','❅'];
-let n=0,last=0,t=null,go=false;
-function spawn(){
-const now=Date.now();if(now-last<160||n>=22)return;
-last=now;n++;
-const p=document.createElement('span');p.className='particle';
-p.textContent=set[Math.floor(Math.random()*set.length)];
-p.style.left=Math.random()*100+'vw';
-p.style.fontSize=(14+Math.random()*14)+'px';
-p.style.opacity=(0.55+Math.random()*0.35).toFixed(2);
-p.style.animationDuration=(7+Math.random()*5)+'s';
-document.body.appendChild(p);
-setTimeout(()=>{p.remove();n--;},12000);
-}
-window.addEventListener('scroll',()=>{if(!go){go=true;spawn();}clearTimeout(t);t=setTimeout(()=>{go=false;},1500);},{passive:true});
-const b=document.querySelector('.birds');
-if(b)setInterval(()=>{if(Math.random()<0.3){b.classList.add('fly');setTimeout(()=>b.classList.remove('fly'),2600);}},30000);
+
+/* Bird animation is enabled only if a real bullfinch asset is supplied. */
+(() => {
+  const birds = document.querySelector('.birds');
+  if (!birds) return;
+  const image = birds.querySelector('img');
+  if (!image || !image.complete || !image.naturalWidth) return;
+  const fly = () => {
+    birds.classList.add('fly');
+    setTimeout(() => {
+      birds.classList.remove('fly');
+      birds.style.animation = 'none';
+      void birds.offsetWidth;
+      birds.style.animation = '';
+    }, 2500);
+    setTimeout(fly, 20000 + Math.random() * 20000);
+  };
+  setTimeout(fly, 20000 + Math.random() * 20000);
 })();
 </script>
-
-
-
 
 </body>
 </html>
