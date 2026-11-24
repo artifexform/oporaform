@@ -301,6 +301,27 @@ footer{padding-bottom:4px}
   .birds,.birds.fly,.particle{animation:none!important}
 }
 
+
+/* точечная настройка фона и бокового декора */
+html, body, .site { background: #f5f0e8 !important; }
+.bg-decor-left, .bg-decor-right {
+  opacity: 0.3;
+  filter: brightness(1.15) saturate(0.6);
+}
+body::before {
+  opacity: 0.3;
+  filter: brightness(1.15) saturate(0.6);
+}
+main, .wrap, .content, .page-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.tile, .card, .feel, .chip {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
 </style>
 </head>
 <body>
@@ -922,10 +943,10 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
     : month >= 5 && month <= 7 ? 'summer'
     : month >= 8 && month <= 10 ? 'autumn' : 'winter';
   const symbols = {
-    winter: ['❄️','❅','❆'],
-    spring: ['🌸','✿'],
-    summer: ['🍃','✽'],
-    autumn: ['🍁','🍂']
+    winter: ['♥'],
+    spring: ['♥'],
+    summer: ['♥'],
+    autumn: ['♥']
   };
   const MAX_PARTICLES = 45;
   const particles = new Set();
@@ -937,13 +958,14 @@ if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus
     el.className = 'particle';
     el.textContent = symbols[season][Math.floor(Math.random() * symbols[season].length)];
     el.style.left = (Math.random() * 100) + 'vw';
-    el.style.opacity = String(.45 + Math.random() * .4);
+    el.style.opacity = '0.2';
     el.dataset.speed = String(.45 + Math.random() * .8);
     el.dataset.x = String(Math.random() * 18 - 9);
     el.dataset.y = '-24';
     el.dataset.rot = String(Math.random() * 180);
-    el.dataset.size = String(13 + Math.random() * 10);
+    el.dataset.size = String(12 + Math.random() * 20);
     el.style.fontSize = el.dataset.size + 'px';
+    el.style.color = ['#e8a0b5', '#ffffff', '#a7a7a7'][Math.floor(Math.random() * 3)];
     document.body.appendChild(el);
     particles.add(el);
   }
