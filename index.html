@@ -783,7 +783,17 @@ function plural(n, f){ const m = n % 10, h = n % 100; return f[(m===1 && h!==11)
 function renderSection(id){
   const s = SECS[id]; if (!s) return renderHome();
   view.innerHTML = `<div class="crumbs"><a data-go="#sections">Разделы</a></div><h1>${esc(s.code)}. ${esc(s.title)}</h1><div class="list">${s.children.map(c => rowFor(c)).join('')}</div>`;
-  const sectionImages = ['Repair (3).png','Repair (7).png','Repair (11).png','Repair (16).png','Repair (10).png','Repair (12).png','Repair (13).png','Repair (14).png','Repair (15).png','Repair (18).png'];
+  // sec-1 «Почему мы ссоримся по кругу» — Repair (14).png (пара на диване с чашками)
+// sec-2 — Repair (7).png
+// sec-3 — Repair (11).png
+// sec-4 — Repair (16).png
+// sec-5 — Repair (10).png
+// sec-6 — Repair (12).png
+// sec-7 — Repair (13).png
+// sec-8 «Ритуалы» — Repair (3).png
+// sec-9 — Repair (15).png
+// sec-10 — Repair (18).png
+const sectionImages = ['Repair (14).png','Repair (7).png','Repair (11).png','Repair (16).png','Repair (10).png','Repair (12).png','Repair (13).png','Repair (3).png','Repair (15).png','Repair (18).png'];
   const sectionIndex = DATA.sections.findIndex(section => section.id === id);
   const sectionImage = sectionImages[(sectionIndex >= 0 ? sectionIndex : 0) % sectionImages.length];
   view.querySelector('h1').insertAdjacentHTML('afterend', `<div class="page-illustration section-card-illustration"><img src="images/${sectionImage}" alt="" loading="lazy"></div>`);
