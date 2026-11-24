@@ -754,6 +754,24 @@ html[data-theme="dark"] body.role-vi .stepbox [data-who="v"]{
 
 
 
+
+<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+  <div class="sheet">
+    <div style="display:flex;align-items:center;gap:10px">
+      <h2 id="helpTitle" style="flex:1">Экстренная помощь</h2>
+      <button class="icon-btn" type="button" data-close>Закрыть</button>
+    </div>
+    <p class="muted small" style="margin-top:0">Если есть угроза жизни, звоните 112. Номер можно нажать или набрать вручную.</p>
+    <a class="tel" href="tel:112"><b>112</b><small>Единый номер экстренных служб</small></a>
+    <a class="tel" href="tel:+74959895050"><b>+7 495 989-50-50</b><small>Горячая линия психологической помощи МЧС России, круглосуточно, из любого региона</small></a>
+    <a class="tel" href="tel:88003334434"><b>8-800-333-44-34</b><small>Кризисная линия доверия по России, бесплатно</small></a>
+    <a class="tel" href="tel:+74956377070"><b>+7 495 637-70-70</b><small>Анонимный телефон доверия НМИЦ им. Сербского, круглосуточно</small></a>
+    <a class="tel" href="tel:+74232902011"><b>8 (423) 290-20-11</b><small>Краевая круглосуточная служба экстренной психологической помощи, Приморский край</small></a>
+    <a class="tel" href="tel:051"><b>051 / +7 495 051</b><small>Московская служба психологической помощи (для жителей Москвы)</small></a>
+    <a class="tel" href="tel:88002000122"><b>8-800-2000-122</b><small>Детский телефон доверия: дети, подростки, родители</small></a>
+    <p class="small"><a data-go="#card-s16" data-close>Приложения для самопомощи и подробности</a></p>
+  </div>
+</div>
 <script>
 /* Всплывающее окно помощи поверх страницы с ограничением по краям экрана */
 (() => {
@@ -803,23 +821,6 @@ html[data-theme="dark"] body.role-vi .stepbox [data-who="v"]{
   window.addEventListener('scroll', () => { if (popup.classList.contains('open')) open(); }, true);
 })();
 </script>
-<div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
-  <div class="sheet">
-    <div style="display:flex;align-items:center;gap:10px">
-      <h2 id="helpTitle" style="flex:1">Экстренная помощь</h2>
-      <button class="icon-btn" type="button" data-close>Закрыть</button>
-    </div>
-    <p class="muted small" style="margin-top:0">Если есть угроза жизни, звоните 112. Номер можно нажать или набрать вручную.</p>
-    <a class="tel" href="tel:112"><b>112</b><small>Единый номер экстренных служб</small></a>
-    <a class="tel" href="tel:+74959895050"><b>+7 495 989-50-50</b><small>Горячая линия психологической помощи МЧС России, круглосуточно, из любого региона</small></a>
-    <a class="tel" href="tel:88003334434"><b>8-800-333-44-34</b><small>Кризисная линия доверия по России, бесплатно</small></a>
-    <a class="tel" href="tel:+74956377070"><b>+7 495 637-70-70</b><small>Анонимный телефон доверия НМИЦ им. Сербского, круглосуточно</small></a>
-    <a class="tel" href="tel:+74232902011"><b>8 (423) 290-20-11</b><small>Краевая круглосуточная служба экстренной психологической помощи, Приморский край</small></a>
-    <a class="tel" href="tel:051"><b>051 / +7 495 051</b><small>Московская служба психологической помощи (для жителей Москвы)</small></a>
-    <a class="tel" href="tel:88002000122"><b>8-800-2000-122</b><small>Детский телефон доверия: дети, подростки, родители</small></a>
-    <p class="small"><a data-go="#card-s16" data-close>Приложения для самопомощи и подробности</a></p>
-  </div>
-</div>
 <div class="toast" id="toast"></div>
 
 
