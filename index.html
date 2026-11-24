@@ -201,269 +201,73 @@ details.more[open] summary::after{transform:rotate(180deg)}
 }
 
 
-/* ============================================
-   REFERENCE DESIGN — warm botanical interior
-   All visual assets are local user-uploaded PNGs
-============================================ */
-:root {
-  --bg:#f7efe7;
-  --surface:#fffdf9;
-  --surface2:#f0e8de;
-  --ink:#24282a;
-  --muted:#626568;
-  --line:#e3dacf;
-  --accent:#34736d;
-  --accent-ink:#fff;
-  --accent-soft:#dcebe5;
-  --red:#b64232;
-  --red-soft:#f5e0da;
-  --green:#3d7650;
-  --green-soft:#e2eee3;
-  --amber:#9a6a12;
-  --amber-soft:#f5ead2;
-  --radius:17px;
-  --shadow:0 2px 4px rgba(50,35,20,.05),0 5px 15px rgba(50,35,20,.07);
+/* Decorative side illustrations, bullfinches and seasonal scroll particles */
+.bg-decor-left,.bg-decor-right{
+  position:fixed;top:0;bottom:0;width:min(19vw,260px);
+  z-index:0;pointer-events:none;opacity:.30;overflow:hidden;
 }
-html[data-theme="dark"] {
-  --bg:#171a19;
-  --surface:#252a28;
-  --surface2:#303633;
-  --ink:#f2eee8;
-  --muted:#b8b9b3;
-  --line:#414742;
-  --accent:#78b8aa;
-  --accent-ink:#14201d;
-  --accent-soft:#30433d;
-  --red:#ca6957;
-  --red-soft:#49312c;
-  --green:#82bd8d;
-  --green-soft:#293c30;
-  --amber:#e3b45c;
-  --amber-soft:#40351e;
-  --shadow:0 3px 14px rgba(0,0,0,.2);
+.bg-decor-left{left:0}
+.bg-decor-right{right:0}
+.bg-decor-left img,.bg-decor-right img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center;
 }
-html { min-height:100%; background:var(--bg); }
-body {
-  position:relative;
-  isolation:isolate;
-  min-height:100vh;
-  background:var(--bg);
-  color:var(--ink);
-  transition:background-color .25s,color .25s;
+header,main,nav.bottom{position:relative;z-index:2}
+.birds{
+  position:fixed;top:10%;right:2%;width:140px;z-index:5;
+  pointer-events:none;transform-origin:center;
+  animation:sway 5s ease-in-out infinite;
 }
-/* Transparent decorative edge frame from the user's calm PNG */
-body::before {
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background-image:url("images/page-frame.png");
-  background-position:top center;
-  background-repeat:no-repeat;
-  background-size:100% auto;
-  opacity:.96;
+.birds img{display:block;width:100%;height:auto;object-fit:contain}
+.birds.fly{animation:fly 2.5s ease-in-out forwards}
+@keyframes sway{
+  0%,100%{transform:rotate(-2deg) translateY(0)}
+  50%{transform:rotate(2deg) translateY(-7px)}
 }
-html[data-theme="dark"] body::before {
-  filter:brightness(.36) saturate(.58);
-  opacity:.7;
+@keyframes fly{
+  0%{transform:translate(0,0) rotate(0);opacity:1}
+  45%{transform:translate(-35vw,-15vh) rotate(-8deg);opacity:1}
+  100%{transform:translate(-75vw,-35vh) rotate(12deg);opacity:0}
 }
-.wrap { max-width:760px; }
-header {
-  background:rgba(250,244,237,.92);
-  border-bottom:1px solid rgba(220,207,191,.8);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
+.particle{
+  position:fixed;top:-35px;z-index:4;pointer-events:none;
+  font-size:20px;line-height:1;will-change:transform,opacity;
+  animation:fall linear forwards;
 }
-header .wrap { background:transparent; }
-html[data-theme="dark"] header { background:rgba(25,29,27,.94); border-color:var(--line); }
-.hrow { gap:9px; padding:10px 0 8px; }
-.brand-lockup {
-  flex:1 1 180px;
-  min-width:135px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:var(--ink);
-  text-decoration:none;
-  white-space:normal;
-  line-height:1.15;
+@keyframes fall{
+  0%{transform:translate3d(0,-5vh,0) rotate(0);opacity:.9}
+  100%{transform:translate3d(35px,110vh,0) rotate(360deg);opacity:0}
 }
-.brand-heart { color:#c86c55; font-size:31px; line-height:1; }
-.brand-copy { display:flex; flex-direction:column; gap:2px; min-width:0; }
-.brand-copy strong { font-size:16px; font-weight:700; }
-.brand-copy small { font-size:11.5px; color:var(--muted); font-weight:400; }
-.icon-btn { border-radius:12px; }
-.icon-btn.sos { border-color:var(--red); background:var(--surface); color:var(--red); }
-.search input { background:rgba(255,253,249,.96); }
-html[data-theme="dark"] .search input { background:var(--surface); }
-main { padding:16px 0 105px; }
-main > .wrap {
-  max-width:760px;
-  padding:17px 20px 42px;
-  min-height:78vh;
-  border-radius:27px 27px 0 0;
-  background:rgba(250,244,237,.91);
-  box-shadow:0 0 28px rgba(70,45,25,.06);
+.page-illustration{
+  display:block;width:100%;margin:12px 0 18px;overflow:hidden;
+  border-radius:var(--radius);background:var(--surface2);
 }
-html[data-theme="dark"] main > .wrap {
-  background:rgba(26,30,28,.94);
-  box-shadow:0 0 28px rgba(0,0,0,.18);
+.page-illustration img{display:block;width:100%;height:auto;max-height:360px;object-fit:contain}
+.home-illustration img{max-height:390px}
+.pause-illustration img{max-height:280px}
+.pause-done-illustration img{max-height:240px}
+.sections-illustration img,.saved-illustration img{max-height:240px}
+@media(max-width:900px){
+  .bg-decor-left,.bg-decor-right{opacity:.18;width:12vw}
+  .birds{width:110px;right:1%}
 }
-h1 { font-size:25px; line-height:1.2; }
-h2 { font-size:19px; margin:24px 0 10px; }
-.sos-big {
-  background:var(--red);
-  color:#fff;
-  border-radius:19px;
-  padding:17px 15px;
-  box-shadow:var(--shadow);
+@media(max-width:480px){
+  .bg-decor-left,.bg-decor-right{display:none}
+  .birds{width:82px;top:12%;right:3%}
+  .particle{font-size:16px}
 }
-html[data-theme="dark"] .sos-big { color:#fff; }
-.sos-big b { font-size:21px; }
-.sos-big span { display:block; font-size:13px; line-height:1.4; margin-top:5px; }
-.home-hero {
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1.03fr);
-  align-items:end;
-  gap:3px;
-  min-height:230px;
-  margin:0 -4px 6px;
-  overflow:hidden;
-}
-.home-hero-copy { min-width:0; align-self:start; padding-top:10px; position:relative; z-index:1; }
-.home-couple-art {
-  width:100%;
-  height:250px;
-  object-fit:contain;
-  object-position:center bottom;
-  align-self:end;
-  filter:drop-shadow(0 5px 6px rgba(75,48,29,.08));
-}
-.home-hero-note {
-  margin:17px 0 2px;
-  padding-left:1px;
-  color:#376c65;
-  font-family:"Golos Text",system-ui,sans-serif;
-  font-size:19px;
-  font-style:italic;
-  line-height:1.35;
-}
-.home-hero-note span { color:#c47b61; font-style:normal; font-size:26px; margin-left:4px; }
-html[data-theme="dark"] .home-hero-note { color:#9ac9bd; }
-.first-section-title { margin-top:10px; }
-.feels { gap:8px; }
-.feel {
-  min-height:58px;
-  padding:10px 13px;
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:14px;
-  font-weight:600;
-  box-shadow:var(--shadow);
-}
-.tiles { grid-template-columns:repeat(4,minmax(0,1fr)); gap:9px; }
-.tile {
-  min-height:83px;
-  padding:12px;
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:15px;
-  box-shadow:var(--shadow);
-}
-.tile b { font-size:14.5px; }
-.tile small { font-size:12px; }
-.roles { background:var(--surface2); border-radius:13px; }
-.roles button { font-size:14px; }
-.roles button.on { background:var(--accent); color:var(--accent-ink); }
-.role-note { font-size:12.5px; line-height:1.4; }
-.chip { background:var(--surface); border-color:var(--line); }
-.row,.body,.stepbox,.timer,.code-btn {
-  background:var(--surface);
-  border-color:var(--line);
-  box-shadow:var(--shadow);
-}
-.row { border-radius:13px; padding:11px 13px; }
-.row .code { background:var(--surface2); }
-.page-illustration {
-  display:block;
-  width:100%;
-  max-height:280px;
-  object-fit:contain;
-  object-position:center;
-  margin:7px auto 17px;
-  border-radius:16px;
-}
-.sections-art { max-height:275px; }
-.pause-calm-art { max-height:250px; }
-.favorites-art { max-height:290px; }
-.pause-complete-art {
-  display:block;
-  width:100%;
-  max-height:310px;
-  object-fit:contain;
-  margin:15px auto 6px;
-}
-.done { background:var(--green-soft); border:1px solid var(--line); }
-.durs button { background:var(--surface); color:var(--ink); border-color:var(--line); }
-.durs button.on { background:var(--accent); color:var(--accent-ink); }
-nav.bottom {
-  background:rgba(255,253,249,.97);
-  border-top:1px solid var(--line);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-}
-html[data-theme="dark"] nav.bottom { background:rgba(37,42,40,.97); }
-nav.bottom a.on { color:var(--accent); }
-.modal .sheet { background:var(--surface); color:var(--ink); }
-.empty { background:var(--surface); border-color:var(--line); }
-@media (max-width:639px) {
-  .wrap { padding-left:13px; padding-right:13px; }
-  .hrow { gap:6px; }
-  .brand-lockup { flex:1 1 110px; min-width:112px; gap:6px; }
-  .brand-heart { font-size:27px; }
-  .brand-copy strong { font-size:14px; }
-  .brand-copy small { font-size:10px; }
-  .icon-btn { height:38px; min-width:36px; padding:0 8px; font-size:13px; }
-  .icon-btn.sos { gap:4px; }
-  main > .wrap { padding:14px 13px 100px; border-radius:22px 22px 0 0; }
-  .home-hero { grid-template-columns:minmax(0,1fr) minmax(0,.96fr); min-height:180px; }
-  .home-couple-art { height:195px; }
-  .sos-big { padding:14px 11px; }
-  .sos-big b { font-size:17px; }
-  .sos-big span { font-size:11.5px; }
-  .home-hero-note { font-size:16px; margin-top:12px; }
-  .home-hero-note span { font-size:22px; }
-  .tiles { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .feel { min-height:54px; }
-  .page-illustration { max-height:220px; }
-  .sections-art { max-height:230px; }
-  .favorites-art { max-height:250px; }
-  .pause-calm-art { max-height:220px; }
-}
-@media (min-width:640px) and (max-width:900px) {
-  .tiles { grid-template-columns:repeat(3,minmax(0,1fr)); }
-}
-@media (max-width:370px) {
-  .brand-lockup { min-width:98px; }
-  .brand-copy strong { font-size:12.5px; }
-  .brand-copy small { font-size:9px; }
-  .icon-btn.sos { font-size:11px; }
-  .role-pill { max-width:65px; overflow:hidden; }
-  .home-hero { min-height:165px; }
-  .home-couple-art { height:175px; }
-}
+@media(prefers-reduced-motion:reduce){.birds,.birds.fly,.particle{animation:none!important}}
 
 </style>
 </head>
 <body>
+<!-- Fixed decorative illustrations -->
+<div class="bg-decor-left" aria-hidden="true"><img src="images/Repair (1).png" alt="" loading="lazy"></div>
+<div class="bg-decor-right" aria-hidden="true"><img src="images/Repair (17).png" alt="" loading="lazy"></div>
+<div class="birds" aria-hidden="true"><img src="images/Repair (11).png" width="140" height="105" alt="" loading="lazy"></div>
 <header>
   <div class="wrap">
     <div class="hrow">
-      <a class="brand-lockup" data-go="#home" aria-label="На главную">
-        <span class="brand-heart" aria-hidden="true">♥</span>
-        <span class="brand-copy"><strong>Как быть, когда сложно</strong><small>Учимся слышать друг друга</small></span>
-      </a>
+      <a class="brand" data-go="#home">Как быть, когда сложно</a>
       <button class="icon-btn sos" id="helpBtn" type="button" aria-label="Экстренная помощь">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
         Помощь
@@ -589,32 +393,14 @@ const view = $('#view');
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
 
 /* ---------- theme & role ---------- */
-function updateThemeButton(){
-  const button = $('#themeBtn');
-  if (!button) return;
-  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-  button.innerHTML = dark
-    ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>`
-    : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>`;
-  button.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
-  button.setAttribute('aria-pressed', String(dark));
-  button.title = button.getAttribute('aria-label');
-}
-function applyTheme(t){
-  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
-  updateThemeButton();
-}
+function applyTheme(t){ document.documentElement.setAttribute('data-theme', t); }
 let theme = store.get('theme', (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
 applyTheme(theme);
-$('#themeBtn').onclick = () => {
-  theme = theme === 'dark' ? 'light' : 'dark';
-  applyTheme(theme);
-  store.set('theme', theme);
-};
+$('#themeBtn').onclick = () => { theme = theme === 'dark' ? 'light' : 'dark'; applyTheme(theme); store.set('theme', theme); };
 
 
 
-let role = store.get('role', 'v');
+let role = store.get('role', 'both');
 const ROLE_NAME = {v: 'Виктор', vi: 'Виктория', both: 'Оба'};
 function applyRole(){
   document.body.classList.toggle('role-v', role === 'v');
@@ -779,17 +565,8 @@ function renderHome(){
   const syms = DATA.symptoms.slice(0, 10).map((s, i) => `<a class="chip" data-sym="${i}">${esc(s.phrase)}</a>`).join('');
   const rec = recent.filter(id => CARDS[id]).slice(0, 4);
   view.innerHTML = `
-    <section class="home-hero" aria-label="Сейчас конфликт">
-      <div class="home-hero-copy">
-        <button class="sos-big" type="button" data-go="#conflict">
-          <b>СЕЙЧАС КОНФЛИКТ</b>
-          <span>Пошагово: стоп-кран → остывание → разбор → закрытие</span>
-        </button>
-        <p class="home-hero-note">Разные люди.<br>Один важный разговор. <span aria-hidden="true">♡</span></p>
-      </div>
-      <img class="home-couple-art" src="images/home-couple.png" alt="Пара разговаривает на диване" fetchpriority="high">
-    </section>
-    <h2 class="first-section-title">Что ты сейчас чувствуешь?</h2>
+    <button class="sos-big" type="button" data-go="#conflict"><b>СЕЙЧАС КОНФЛИКТ</b><span>Пошагово: стоп-кран → остывание → разбор → закрытие</span></button>
+    <h2 style="margin-top:22px">Что ты сейчас чувствуешь?</h2>
     <div class="feels">${FEELS.map(f => `<a class="feel" data-go="#feel-${f.id}">${esc(f.t)}</a>`).join('')}</div>
     <h2>Кто читает?</h2>
     <div class="roles" role="group" aria-label="Кто читает">
@@ -806,14 +583,16 @@ function renderHome(){
     <h2>Главное</h2>
     <div class="list">${rowFor('s0', 'Пять мыслей, на которых держится весь документ')}${rowFor('s10', 'Готовые фразы с кнопкой «копировать»')}${rowFor('s7', 'Коды и правила связи в аврал')}</div>
     <footer>Обновлено ${UPDATED}. <a data-go="#card-s18">Шаблон изменений</a></footer>`;
+  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration home-illustration"><img src="images/Repair (2).png" alt="Иллюстрация пары на диване" loading="lazy"></div>`);
   view.querySelectorAll('[data-role]').forEach(b => b.onclick = () => { setRole(b.dataset.role); renderHome(); });
   view.querySelectorAll('[data-sym]').forEach(a => a.onclick = e => { e.preventDefault(); const s = DATA.symptoms[+a.dataset.sym]; $('#q').value = s.phrase.replace(/[«»]/g, ''); onSearch(); });
 }
 function renderSections(){
-  view.innerHTML = `<h1>Разделы</h1><img class="page-illustration sections-art" src="images/sections-talk.png" alt="Пара разговаривает рядом с плакатом «Разные люди. Один важный разговор»" loading="lazy"><div class="list">${DATA.sections.map(s => {
+  view.innerHTML = `<h1>Разделы</h1><div class="list">${DATA.sections.map(s => {
     const one = s.children.length === 1 && CARDS[s.children[0]] && CARDS[s.children[0]].code === s.code;
     return one ? rowFor(s.children[0], preview(s.children[0])) : rowFor(s.id, s.children.length + ' ' + plural(s.children.length, ['карточка','карточки','карточек']));
   }).join('')}</div>`;
+  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration sections-illustration"><img src="images/Repair (9).png" alt="Иллюстрация разделов" loading="lazy"></div>`);
 }
 function preview(id){ const c = CARDS[id]; if (!c) return ''; const s = c.text.slice(0, 80); return esc(s.length < c.text.length ? s.replace(/\s+\S*$/, '') + '…' : s); }
 function plural(n, f){ const m = n % 10, h = n % 100; return f[(m===1 && h!==11) ? 0 : (m>=2 && m<=4 && (h<12 || h>14)) ? 1 : 2]; }
@@ -855,8 +634,9 @@ function setupChecklist(id){
 }
 function renderSaved(){
   const f = favs.filter(id => CARDS[id]);
-  view.innerHTML = `<h1>Избранное</h1><img class="page-illustration favorites-art" src="images/favorites-joy.png" alt="Счастливая пара обнимается" loading="lazy">${f.length ? `<div class="list">${f.map(id => rowFor(id)).join('')}</div>` : `<div class="empty">Пока пусто. Нажмите ☆ в карточке, чтобы она появилась здесь.</div>`}
+  view.innerHTML = `<h1>Избранное</h1>${f.length ? `<div class="list">${f.map(id => rowFor(id)).join('')}</div>` : `<div class="empty">Пока пусто. Нажмите ☆ в карточке, чтобы она появилась здесь.</div>`}
     ${recent.length ? `<h2>Недавно открывали</h2><div class="list">${recent.filter(id => CARDS[id]).map(id => rowFor(id)).join('')}</div>` : ''}`;
+  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration saved-illustration"><img src="images/Repair (6).png" alt="Иллюстрация избранного" loading="lazy"></div>`);
 }
 
 function linkRefs(s){
@@ -954,7 +734,6 @@ function renderPause(){
   const end = store.get('pauseEnd', 0);
   const active = end && end > Date.now() - 6*3600e3;
   view.innerHTML = `<h1>Безопасная пауза</h1>
-    <img class="page-illustration pause-calm-art" src="images/pause-calm.png" alt="Тихая уютная комната и человек отдыхает с чашкой чая" loading="lazy">
     <p class="muted" style="margin-top:-4px">Выберите, сколько нужно. Сайт посчитает время возврата и подготовит сообщение.</p>
     <div class="durs">${DURS.map(([v, l]) => `<button type="button" data-d="${v}">${l}</button>`).join('')}</div>
     <div id="tbox"></div>
@@ -969,6 +748,7 @@ function renderPause(){
     <p class="muted small" style="margin-top:-4px">Нажмите, чтобы скопировать и отправить в мессенджер.</p>
     <div class="codes">${CODES.map(([e, t]) => `<button class="code-btn" type="button" data-code="${e} ${esc(t)}"><span class="e">${e}</span><span>${esc(t)}</span></button>`).join('')}</div>
     <p class="small" style="margin-top:14px"><a data-go="#card-s7">Правила связи в режиме «штормов»</a> · <a data-go="#card-p3">Правило П3</a></p>`;
+  view.insertAdjacentHTML('afterbegin', `<div class="page-illustration pause-illustration"><img src="images/Repair (4).png" alt="Спокойная комната для паузы" loading="lazy"></div>`);
   view.querySelectorAll('[data-d]').forEach(b => b.onclick = () => {
     let endT;
     if (b.dataset.d === 'morning'){ const d = new Date(); d.setDate(d.getDate() + (d.getHours() >= 6 ? 1 : 0)); d.setHours(9, 0, 0, 0); endT = d.getTime(); }
@@ -981,7 +761,7 @@ function renderPause(){
   const draw = () => {
     const left = end - Date.now();
     if (left <= 0){
-      box.innerHTML = `<div class="done"><b>Время вернуться.</b> Начни первым:<div class="say">«Я вернулся. Готов поговорить».<button class="cp" type="button" data-t="Я вернулся. Готов поговорить.">копировать</button></div><img class="pause-complete-art" src="images/pause-hug.png" alt="Пара обнимается после паузы" loading="lazy"><button class="btn" type="button" id="tReset">Закрыть таймер</button></div>`;
+      box.innerHTML = `<div class="done"><div class="page-illustration pause-done-illustration"><img src="images/Repair (5).png" alt="Пара обнимается после паузы" loading="lazy"></div><b>Время вернуться.</b> Начни первым:<div class="say">«Я вернулся. Готов поговорить».<button class="cp" type="button" data-t="Я вернулся. Готов поговорить.">копировать</button></div><button class="btn" type="button" id="tReset">Закрыть таймер</button></div>`;
       $('#tReset').onclick = () => { store.set('pauseEnd', 0); renderPause(); };
       clearInterval(tick); return;
     }
@@ -1073,5 +853,65 @@ linkify(document);
 route();
 if (window.matchMedia && matchMedia('(min-width: 900px)').matches) $('#q').focus();
 </script>
+
+<script>
+/* Seasonal particles: create only while the page is being scrolled. */
+(() => {
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  const month = new Date().getMonth();
+  const seasonEmoji = month >= 2 && month <= 4 ? '🌸' : month >= 5 && month <= 7 ? '🍃' : month >= 8 && month <= 10 ? '🍁' : '❄️';
+  const MAX_PARTICLES = 25;
+  const active = new Set();
+  let scrollStopTimer = null;
+  let spawning = false;
+  let spawnTimer = null;
+  function spawnParticle(){
+    if (active.size >= MAX_PARTICLES) return;
+    const particle = document.createElement('span');
+    particle.className = 'particle';
+    particle.textContent = seasonEmoji;
+    particle.setAttribute('aria-hidden', 'true');
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.animationDuration = (6 + Math.random() * 4) + 's';
+    particle.style.opacity = String(.6 + Math.random() * .3);
+    document.body.appendChild(particle);
+    active.add(particle);
+    const remove = () => { if (active.delete(particle)) particle.remove(); };
+    particle.addEventListener('animationend', remove, {once:true});
+    window.setTimeout(remove, 11000);
+  }
+  function startSpawning(){
+    if (spawning) return;
+    spawning = true;
+    spawnParticle();
+    spawnTimer = window.setInterval(spawnParticle, 150);
+  }
+  function stopSpawning(){
+    spawning = false;
+    if (spawnTimer !== null) window.clearInterval(spawnTimer);
+    spawnTimer = null;
+  }
+  window.addEventListener('scroll', () => {
+    startSpawning();
+    if (scrollStopTimer !== null) window.clearTimeout(scrollStopTimer);
+    scrollStopTimer = window.setTimeout(stopSpawning, 1500);
+  }, {passive:true});
+})();
+
+/* Rare bullfinch flight. */
+(() => {
+  const birds = document.querySelector('.birds');
+  if (!birds || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  const fly = () => {
+    birds.classList.remove('fly');
+    void birds.offsetWidth;
+    birds.classList.add('fly');
+    window.setTimeout(() => birds.classList.remove('fly'), 2500);
+  };
+  window.setInterval(fly, 30000);
+})();
+</script>
+
 </body>
 </html>
