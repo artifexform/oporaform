@@ -681,6 +681,47 @@ html[data-theme="dark"] body.role-vi .stepbox [data-who="v"]{
 
 
 
+
+/* Принудительное позиционирование модального окна поверх всего */
+.modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.modal.open {
+  display: flex !important;
+}
+.modal .sheet {
+  background: var(--surface);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  margin: auto;
+}
+@media (max-width: 639px) {
+  .modal {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .modal .sheet {
+    border-radius: 20px 20px 0 0;
+    max-width: 100%;
+    max-height: 85vh;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+}
+
 </style>
 </head>
 <body>
