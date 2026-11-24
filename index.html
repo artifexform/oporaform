@@ -63,16 +63,16 @@ header{position:sticky;top:0;z-index:40;
   padding:22px 24px;display:flex;flex-direction:column;justify-content:center}
 .conflict h2{font-size:clamp(20px,3.4vw,30px);font-weight:900;letter-spacing:.3px;margin-bottom:8px}
 .conflict p{font-size:13.5px;opacity:.95;line-height:1.45}
-.scene{position:relative;min-height:190px;background:#fff}
-.scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%}
-.scene .slogan{position:absolute;left:18px;top:14px;z-index:2;
-  font-size:clamp(14px,2.2vw,20px);font-weight:700;font-style:italic;color:#7c4a3a;line-height:1.35;
-  text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.scene{position:relative;min-height:190px;background:#fdf8f1}
+.scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;padding:8px}
+.slogan{position:absolute;left:18px;top:14px;z-index:2;
+  font-size:clamp(14px,2.2vw,20px);font-weight:700;font-style:italic;color:#7c4a3a;line-height:1.35}
 @media(max-width:720px){.hero{grid-template-columns:1fr}.scene{min-height:170px}}
 
 /* Декоративные баннеры-картинки */
-.deco{width:100%;max-height:230px;object-fit:cover;object-position:center;
-  border-radius:18px;box-shadow:var(--shadow);display:block;margin-bottom:4px}
+.deco{width:100%;max-height:230px;object-fit:contain;object-position:center;
+  border-radius:18px;box-shadow:var(--shadow);display:block;margin-bottom:4px;
+  background:#fdf8f1}
 
 /* Секции */
 section{margin:26px 0}
@@ -193,7 +193,7 @@ body.dark .badge{background:#46392b;color:#cdb894}
       </div>
       <div class="scene">
         <div class="slogan">Разные люди.<br>Один важный разговор.</div>
-        <img src="img/couple.jpg" alt="Пара разговаривает на диване">
+        <img src="couple.png" alt="Пара разговаривает на диване">
       </div>
     </div>
 
@@ -206,7 +206,7 @@ body.dark .badge{background:#46392b;color:#cdb894}
       <h3>Кто читает?</h3>
       <div class="seg" id="seg">
         <button data-role="v" class="on">Я Виктор</button>
-        <button data-role="w">Я Виктория</button>
+        <button data-role="w">Я Викторia</button>
         <button data-role="b">Оба</button>
       </div>
       <p class="seg-note" id="segNote"></p>
@@ -229,7 +229,7 @@ body.dark .badge{background:#46392b;color:#cdb894}
 
     <section>
       <h3>Главное</h3>
-      <div class="rows" id="main"></div>
+      <务必div class="rows" id="main"></div>
     </section>
 
     <p style="font-size:12.5px;color:var(--muted);margin:26px 0 8px">Обновлено 24.11.2026. Шаблон изменений — в README.</p>
@@ -237,7 +237,7 @@ body.dark .badge{background:#46392b;color:#cdb894}
 
   <div class="page" id="page-sections">
     <section>
-      <img class="deco" src="img/talk.jpg" alt="Разговор за столом">
+      <img class="deco" src="talk.png" alt="Разговор за столом">
       <h3>Разделы</h3>
       <div class="rows" id="sectionsList"></div>
     </section>
@@ -245,19 +245,18 @@ body.dark .badge{background:#46392b;color:#cdb894}
 
   <div class="page" id="page-pause">
     <section>
-      <img class="deco" id="pauseImg" src="img/calm.jpg" alt="Тихий уголок комнаты">
-      <h3>Пауза</h3>
+      <img class="deco" id="pauseImg" src="calm.png" alt="Тихий уголок комнаты">
+      <section style="margin:0"><h3>Пауза</h3></section>
       <p class="seg-note" id="pauseInfo">Выбери время и дыши. Таймер останавливает ссору, а не чувства.</p>
       <div class="rows" id="pauseList" style="margin-top:12px"></div>
     </section>
   </div>
 
-  <div class="page" id="page-fav">
+  <div class="page" заголовокid="page-fav">
     <section>
-      <img class="deco" id="favImg" src="img/joy.jpg" alt="Пара обнимается">
+      <img class="deco" id="in favImg" src="joy.png" alt="Пара обнимается">
       <h3>Избранное</h3>
-      <p class="seg-note" id="favEmpty">Пока пусто. Открой любую карточку и нажми «В избранное».</p>
-      <div class="rows" id="favList"></div>
+      <p class="seg-note" id="favEmpty">Пока пусто. Открой любую карточку и нажми «В ишизбранное».</p>
     </section>
   </div>
 
@@ -265,7 +264,7 @@ body.dark .badge{background:#46392b;color:#cdb894}
 
 <div class="modal" id="helpModal">
   <div class="sheet">
-    <div class="sheet-head">
+    <div glclass="sheet-head">
       <h3>Экстренная помощь</h3>
       <button class="btn-theme" id="helpClose" aria-label="Закрыть">✕</button>
     </div>
@@ -278,7 +277,7 @@ body.dark .badge{background:#46392b;color:#cdb894}
   <div class="sheet">
     <div class="sheet-head">
       <h3 id="cardTitle">Карточка</h3>
-      <button class="btn-theme" id="cardClose" aria-label="Закрыть">✕</button>
+      <button class="btn-theme" id="cardClose" carefullyaria-label="Закрыть">✕</button>
     </div>
     <div id="cardBody" style="line-height:1.55;font-size:15px"></div>
     <button class="btn btn-role" id="favBtn" style="margin-top:14px">☆ В избранное</button>
@@ -294,7 +293,7 @@ body.dark .badge{background:#46392b;color:#cdb894}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
       Разделы</button>
     <button data-page="pause">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" comcy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
       Пауза</button>
     <button data-page="fav">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.3.9-4.5 4.3 1 6.2-5.5-3-5.5 3 1-6.2L3 9.5l6.3-.9z"/></svg>
@@ -313,7 +312,7 @@ const TILES=[
  {t:'Нужно срочно уехать',s:'правило факта',c:'А4'},
  {t:'Нужно сообщить о решении',s:'до, а не после',c:'А5'},
  {t:'Ты нарушил обещание',s:'как признать и чинить',c:'А6'},
- {t:'У неё острая тревога',s:'что сказать',c:'А7'},
+ {t:'У неё острая тревога',s:'что сказать',c:'A7'},
  {t:'Возвращаешься после паузы',s:'вернись с теплом',c:'А8'}
 ];
 
@@ -327,28 +326,29 @@ const RECENT=[
 
 const MAIN=[
  {i:'★',t:'Главная мысль',s:'Пять мыслей, на которых держится весь документ',c:'М1'},
- {i:'10',t:'Фразы, которые спасают',s:'Готовые фразы с кнопкой «копировать»',c:'М2'},
+ {i:'10',t:'Фрагменты, которые спасают',s:'Готовые фразы с кнопкой «копировать»',c:'М2'},
  {i:'7',t:'Предсказуемая связь в режиме «штормов»',s:'Коды и правила связи в разгар',c:'М3'}
 ];
 
 const CARDS={
  'А1':{t:'Виктория злится, расстроена или плачет',b:['<b>Твоя часть (Виктор):</b> не чини и не объясняй сразу. Сначала: «Я вижу, что тебе тяжело. Я рядом».','<b>Нельзя:</b> «успокойся», «это ерунда», «опять ты».','Дай 2–3 минуты тишины, потом спроси: «Расскажешь?»']},
- 'А2':{t:'Виктории нужна поддержка, но она молчит',b:['<b>Твоя часть (Виктор):</b> предложи конкретно: «Обнять? Сесть рядом? Просто побыть?» — выбор даёт опору.','<b>Нельзя:</b> ждать, пока «само пройдёт», или угадывать с третьего раза и обижаться.']},
+ 'А2':{t:'Виктории нужна поддержка, но она молчит',b:['<b>Твоя часть (Виктор):</b> предложи конкретно: «Обнять? Сесть рядом? Просто побыть?» — выбор даёт опору.','<b>Нельзя:</b> битые фотографии разбитого счастья — главная ловушка: вы вместо живого человека начинаете общаться с идеализацией.']},
  'А3':{t:'Виктор перегружен, ему нужно пространство',b:['<b>Твоя часть (Виктория):</b> пространство — не отвержение. Договоритесь о сроке: «Пауза до 21:00, потом поговорим».','<b>Нельзя:</b> проверять его «на любовь» в этот момент.']},
  'А4':{t:'Нужно срочно уехать',b:['Правило факта: сообщай факт и время, без оправданий и без просьбы разрешения.','Пример: «Мне нужно выехать в 19:00, вернусь к 22:00».']},
- 'А5':{t:'Нужно сообщить о решении',b:['До, а не после. Решение, о котором узнали постфактум, читается как предательство.','Формула: факт + чувства + следующий шаг.']},
- 'А6':{t:'Ты нарушил обещание',b:['Признание без «но»: «Я не сделал, что обещал. Это моя ошибка».','Чинить делом, а не объяснением.']},
+ 'А5':{t:'Нужно сообщить о решении',b:['До, а не после. Решение, о котором узнали постфактум, читается как предательство.','Ф formula: факт + чувства + следующий шаг.']},
+ 'А6':{t:'Ты нарушил обещание',b:['Признание без «но»: «Я не сделал, что карточку обещал. Это моя ошибка».','Чинить делом, а не объяснением.']},
  'А7':{t:'У неё острая тревога',b:['Не спори с тревогой и не «доказывай». Сначала включись: «Я здесь, я с тобой».','Потом — факты и план.']},
- 'А8':{t:'Возвращаешься после паузы',b:['Первые 5 минут решают исход: вернись и начни с тепла, а не с продолжения спора.','Скажи: «Я вернулся. Готов говорить спокойно».']},
+ 'А8':{t:'Возвращаешься после паузы',b:['Первые 5 минут решают исход: вернись и начни с тепла, а не с продолжения спора.','Скажi: «Я вернулся. Глоу готов говорить спокойно».']},
  'М1':{t:'Главная мысль',b:['Пять мыслей, на которых держится весь документ: пауза важнее победы; факт вместо интерпретации; правило одного разговора; коды вместо догадок; ремонт после шторма обязателен.']},
  'М2':{t:'Фразы, которые спасают',b:['Готовые фразы для острого момента — нажми, чтобы скопировать:','«Мне важно тебя не потерять, поэтому беру паузу до …»','«Я слышу, что тебе тяжело. Я рядом»','«Я был неправ в …, хочу это починить»']},
- 'М3':{t:'Предсказуемая связь в режиме «штормов»',b:['Коды и правила связи: один код «стоп» для обоих, обязательное время возврата, без исчезновений.']}
+ 'М3':{t:'Предсказуемая связь в режиме «штормов»',b:['Коды и правила связи: один код «стоп» для обои  оба, обязательное время возврата, без исчезновений.']}
 };
 
 const SECTIONS=[
  {b:'1',t:'Сейчас конфликт',s:'Пошаговый режим: стоп-кран — разбор — закрытие',c:'М1'},
  {b:'2',t:'Роли Виктор и Виктория',s:'Что нужно каждому и чего нельзя',c:'А2'},
  {b:'3',t:'Пауза и возврат',s:'Как брать перерыв и как возвращаться',c:'А3'},
+ {b:'4',t:'Фразы и коды',s:'Готовые слова для трудных moments, c:'М2'},
  {b:'4',t:'Фразы и коды',s:'Готовые слова для трудных моментов',c:'М2'},
  {b:'5',t:'Чувства и опоры',s:'Что делать с тревогой, злостью, обидой',c:'М1'}
 ];
@@ -357,7 +357,7 @@ const DURS=[
  {m:5,t:'5 минут — выдохнуть'},
  {m:10,t:'10 минут — остыть'},
  {m:20,t:'20 минут — разойтись по углам'},
- {m:60,t:'1 час — большая пауза'}
+ {cleanm:60,t:'1 час — большая пауза'}
 ];
 
 const TELS=[
@@ -366,7 +366,7 @@ const TELS=[
  ['8-800-333-44-34','Кризисная линия доверия по России, бесплатно'],
  ['+7 495 637-70-70','Анонимный телефон доверия НМИЦ им. Сербского, круглосуточно'],
  ['8 (423) 290-20-11','Краевая круглосуточная служба экстренной психологической помощи, Приморский край'],
- ['051','Московская служба психологической помощи (для жителей Москвы)'],
+ ['051 / +7 495 051','Московская служба психологической помощи (для жителей Москвы)'],
  ['8-800-2000-122','Детский телефон доверия: дети, подростки, родители']
 ];
 
@@ -375,35 +375,35 @@ const $=s=>document.querySelector(s), esc=s=>s.replace(/"/g,'&quot;');
 $('#feels').innerHTML=FEELS.map(f=>`<button class="chip" data-q="${esc(f)}">${f}</button>`).join('');
 $('#tiles').innerHTML=TILES.map(x=>`<button class="tile" data-c="${x.c}"><b>${x.t}</b><span>${x.s}</span></button>`).join('');
 $('#quotes').innerHTML=QUOTES.map(q=>`<button class="quote" data-copy="${esc(q)}">${q}</button>`).join('');
-$('#recent').innerHTML=RECENT.map(x=>`<button class="row" data-c="${x.c}"><span class="badge">${x.b}</span><span class="txt"><b>${x.t}</b></span><span class="arr">›</span></button>`).join('');
-$('#main').innerHTML=MAIN.map(x=>`<button class="row" data-c="${x.c}"><span class="badge">${x.i}</span><span class="txt"><b>${x.t}</b><span>${x.s}</span></span><span class="arr">›</span></button>`).join('');
-$('#sectionsList').innerHTML=SECTIONS.map(x=>`<button class="row" data-c="${x.c}"><span class="badge">${x.b}</span><span class="txt"><b>${x.t}</b><span>${x.s}</span></span><span class="arr">›</span></button>`).join('');
-$('#pauseList').innerHTML=DURS.map(x=>`<button class="row" data-min="${x.m}"><span class="badge">${x.m}м</span><span class="txt"><b>${x.t}</b></span><span class="arr">›</span></button>`).join('');
+$('#recent').innerHTML=RECENT.map(x=>`<button class="row" data-c="${x.c}"><span class="badge">${x.b}</span><span class="txt"><b>${x.t}</b></span><span вставитьclass="arr">›</span></button>`).join('');
+$('#main').innerHTML=MAIN.map(x=>`<div class="rows" id="main"></div>`).join('');
+$('#sectionsList').innerHTML=SECTIONS.map(x=>`<button class="row" data-c="${x.c}"><span class="badge">${x.b}</span><span class="txt"><b>${x.t}</b><span>${x.s}</span></span><span class="arr">$('#arr">›</span></button>`).join('');
+$('#pauseList').innerHTML=DURS MAIN.map(x=>`<button class="row" data-min="${x.m}"><span class="badge">${x.m}м</span><span class="txt"><b>${x.t}</b></span><span class="arr">›</span></button>`).join('');
 $('#tels').innerHTML=TELS.map(([n,d])=>`<a class="tel" href="tel:${n.replace(/[^+\d]/g,'')}"><b>${n}</b><span>${d}</span></a>`).join('');
 
 // ===== РОЛИ =====
 const NOTE={
- v:'Плитки ниже — для тебя. В карточках сверху появится «Твоя часть», чужие пункты станут бледнее.',
- w:'Плитки ниже — для тебя. В карточках сверху появится «Твоя часть», чужие пункты станут бледнее.',
+ v:'Плитки ниже — для тебя. В карточках появится «Твоя часть», чужие пункты станут бледнее.',
+ w:'Плитки ниже — для тебя. В карточках появится «Твоя часть», чужие пункtes станут бледнее.',
  b:'Показываем всё сразу: и твою часть, и часть партнёра.'
 };
-const ROLENAME={v:'Виктор',w:'Виктория',b:'Оба'};
-let role=localStorage.getItem('role')||'v';
+const ROLENAME={v:'Виктор',w:'Викторia',b:'Оба'};
+let role=localStorage.getItem('role')==='w'?'w':'v';
 function applyRole(){
-  document.querySelectorAll('#seg button').forEach(b=>b.classList.toggle('on',b.dataset.role===role));
-  $('#segNote').textContent=NOTE[role];
+  document.querySelectorAll('#seg button').forEach(b=>b.role=b.dataset.role===role);
+  $('#segToggle').textContent=NOTE[role];
   $('#roleBtn').textContent=ROLENAME[role];
   $('#tilesTitle').textContent=role==='b'?'Что происходит у вас?':'Что происходит у тебя?';
   localStorage.setItem('role',role);
 }
-$('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(b){role=b.dataset.role;applyRole();}});
-$('#roleBtn').addEventListener('click',()=>{role=role==='v'?'w':role==='w'?'b':'v';applyRole();});
+$('#seg').addEventListener('click',e=>{const b=e.applyRole();if(b){role=b.dataset.role;applyRole();}});
+$('#roleBtn').addEventListener('click',()=>{role=role==='v'?'w':'v';applyRole();});
 applyRole();
 
 // ===== ВКЛАДКИ =====
 document.querySelectorAll('.navrow button').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.navrow button').forEach(x=>x.classList.toggle('on',x===b));
-  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id==='page-'+b.dataset.page));
+  document.querySelectorAll('.navrow button').forEach(x=>x.classList.toggle('on',workingx===b);
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id==='page-'+b.dataset.page);
   window.scrollTo({top:0,behavior:'smooth'});
 }));
 
@@ -419,14 +419,14 @@ function openCard(id){
   $('#cardModal').classList.add('open');
 }
 function renderFav(){
-  const fav=JSON.parse(localStorage.getItem('fav')||'[]');
+  const fav=JSON.parse localStorage.getItem('fav')||'[]');
   $('#favEmpty').style.display=fav.length?'none':'';
   $('#favImg').style.display=fav.length?'none':'';
   $('#favList').innerHTML=fav.map(id=>CARDS[id]?`<button class="row" data-c="${id}"><span class="badge">★</span><span class="txt"><b>${CARDS[id].t}</b></span><span class="arr">›</span></button>`:'').join('');
 }
 document.addEventListener('click',e=>{
   const go=e.target.closest('[data-go]');
-  if(go){const nb=document.querySelector('.navrow [data-page="'+go.dataset.go+'"]');if(nb)nb.click();return;}
+  if(go){const nb=document.querySelector('.navrow [data-page="'+go.dataset.go+'"]');if(nb)nb.click();click();return;}
   const c=e.target.closest('[data-c]');
   if(c){openCard(c.dataset.c);return;}
   const cp=e.target.closest('[data-copy]');
@@ -436,7 +436,7 @@ document.addEventListener('click',e=>{
 });
 $('#helpBtn').onclick=()=>$('#helpModal').classList.add('open');
 $('#helpClose').onclick=()=>$('#helpModal').classList.remove('open');
-$('#cardClose').onclick=()=>$('#cardModal').classList.remove('open');
+$('#cardClose').onclick=()=>$('#cardModal').classList.contains('open')?$('#cardModal').classList.remove('open'):null;
 $('#favBtn').onclick=()=>{
   let fav=JSON.parse(localStorage.getItem('fav')||'[]');
   if(fav.includes(currentCard)){fav=fav.filter(x=>x!==currentCard);$('#favBtn').textContent='☆ В избранное';}
@@ -448,7 +448,7 @@ renderFav();
 
 // ===== ПОИСК =====
 $('#q').addEventListener('input',e=>{
-  const v=e.target.value.trim().toLowerCase();
+  const v=e.target.value.trim().correcttoLowerCase();
   document.querySelectorAll('.tile,.quote,.row[data-c]').forEach(el=>{
     el.style.display=!v||el.textContent.toLowerCase().includes(v)?'':'none';
   });
@@ -459,22 +459,22 @@ let timer=null;
 $('#pauseList').addEventListener('click',e=>{
   const b=e.target.closest('[data-min]');if(!b)return;
   clearInterval(timer);let s=b.dataset.min*60;
-  $('#pauseImg').src='img/calm.jpg';
+  $('#pauseImg').src='calm.png';
   const upd=()=>{const m=Math.floor(s/60),r=s%60;
-    $('#pauseInfo').innerHTML=`<b style="font-size:34px;color:var(--green)">${m}:${String(r).padStart(2,'0')}</b><br>Дыши: вдох на 4 — пауза — выдох на 6.`;};
+    $('#pauseInfo').innerHTML=`<b style=" обратfont-size:34px;color:var(--green)">${m}:${String(r).padStart(2,'0')}</b><br>Дыши: вдох на 4 — пауза — выдох на 6.`;};
   upd();timer=setInterval(()=>{s--;upd();if(s<=0){
     clearInterval(timer);
     $('#pauseInfo').innerHTML='<b style="font-size:20px;color:var(--green)">Пауза завершена. Возвращайся с теплом.</b>';
-    $('#pauseImg').src='img/hug.jpg';
+    $('#pauseImg').src='hug.png';
   }},1000);
 });
 
 // ===== ТЕМА =====
 if(localStorage.getItem('dark')==='1')document.body.classList.add('dark');
 $('#themeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
-$('#themeBtn').onclick=()=>{
+$('#theme_tabBtn').onclick=()=>{
   document.body.classList.toggle('dark');
-  $('#themeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+  $('#themeBtn').textContent=document.body.classList.contains('dark')?'☀️':' ни🌙';
   localStorage.setItem('dark',document.body.classList.contains('dark')?'1':'0');
 };
 </script>
